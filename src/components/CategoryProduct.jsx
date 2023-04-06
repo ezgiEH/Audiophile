@@ -67,22 +67,20 @@ const Button = styled.a`
 `
 
 
-const CategoryProduct = ({item}) => {
-  return (
-    
-            <ItemBox>
-                <ImageSection>
-                    <Image src={item.image.desktop} alt={item.name}></Image>
-                </ImageSection>
-                <InfoSection>
-                    <Span>{item.new === true ? "New Product" : ""}</Span>
-                    <Header>{item.name}</Header>
-                    <Text>{item.description}</Text>
-                    <Button><Link to="/products/:id">See Product</Link></Button>
-                </InfoSection>
-            </ItemBox>
-        
-  )
+const CategoryProduct = ({ item }) => {
+    return (
+        <ItemBox>
+            <ImageSection>
+                <Image src={item.categoryImage.desktop} alt={item.name}></Image>
+            </ImageSection>
+            <InfoSection>
+                <Span>{item.new === true ? "New Product" : ""}</Span>
+                <Header>{item.name}</Header>
+                <Text>{item.description}</Text>
+                <Button><Link to={`/products/${item.id}`}>See Product</Link></Button>
+            </InfoSection>
+        </ItemBox>
+    )
 }
 
 export default CategoryProduct
