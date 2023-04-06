@@ -1,38 +1,108 @@
-.App {
-  text-align: center;
+:root{
+  /* Colors */
+  --Main-Orange: rgb(216, 125, 74);
+  --Main-Black: rgb(16,16,16);
+  --Main-Gray: rgb(241,241,241);
+  --Main-White: rgb(250,250,250);
+  --Second-Orange: rgb(251,175,133);
+  --Second-White: rgb(255,255,255);
+  --Second-Black: rgb(0,0,0);
+
+  /* Fonts */
+  --Main-Font: 'Manrope', sans-serif;
+  --H1-Fontsize: 56px;
+  --H1-Linespace: 58px;
+  --H1-Char: 2px;
+  --H1-Bold: 700;
+
+  --H2-Fontsize: 40px;
+  --H2-Linespace: 44px;
+  --H2-Char: 1.5px;
+  --H2-Bold: 700;
+
+  --H3-Fontsize: 32px;
+  --H3-Linespace: 36px;
+  --H3-Char: 1.15px;
+  --H3-Bold: 700;
+
+  --H4-Fontsize: 28px;
+  --H4-Linespace: 38px;
+  --H4-Char: 2px;
+  --H4-Bold: 700;
+
+  --H5-Fontsize: 24px;
+  --H5-Linespace: 33px;
+  --H5-Char: 1.7px;
+  --H5-Bold: 700;
+
+  --H6-Fontsize: 18px;
+  --H6-Linespace: 24px;
+  --H6-Char: 1.3px;
+  --H6-Bold: 700;
+
+  --Text-Fontsize: 17px;
+  --Text-Linespace: 25px;
+  
+
+  --Overline-Fontsize: 14px;
+  --Overline-Linepace: 19px;
+  --Overline-Char: 10px;
+
+  --Subtitle-Fontsize: 13px;
+  --Subtitle-Linepace: 25px;
+  --Subtitle-Char: 1px;
+
+  --Main-border-radius: 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+a{
+  color: var(--Main-Black);
+  text-decoration: none;
+}
+h1{
+  font-size: var(--H1-Fontsize);
+  font-weight: var(--H1-Bold);
+  line-height: var(--H1-Linespace);
+  letter-spacing: var(--H1-Char);
+}
+h2{
+  font-size: var(--H2-Fontsize);
+  font-weight: var(--H2-Bold);
+  line-height: var(--H2-Linespace);
+  letter-spacing: var(--H2-Char);
+}
+h3{
+  font-size: var(--H3-Fontsize);
+  font-weight: var(--H3-Bold);
+  line-height: var(--H3-Linespace);
+  letter-spacing: var(--H3-Char);
+}
+h4{
+  font-size: var(--H4-Fontsize);
+  font-weight: var(--H4-Bold);
+  line-height: var(--H4-Linespace);
+  letter-spacing: var(--H4-Char);
+}
+h5{
+  font-size: var(--H5-Fontsize);
+  font-weight: var(--H5-Bold);
+  line-height: var(--H5-Linespace);
+  letter-spacing: var(--H5-Char);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h6{
+  font-size: var(--H6-Fontsize);
+  font-weight: var(--H6-Bold);
+  line-height: var(--H6-Linespace);
+  letter-spacing: var(--H6-Char);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body{
+  font-family: var(--Main-Font);
+  font-size: 15px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.menu{
+  color: var(--Main-White);
+  text-transform: uppercase;
 }
