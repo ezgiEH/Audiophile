@@ -1,11 +1,11 @@
 import React from 'react'
-import data from '../data.json';
 import CategoryHero from '../components/CategoryHero';
 import Categories from '../components/Categories'
 import About from '../components/About'
 import Footer from '../components/Footer'
-
 import styled from 'styled-components';
+import CategoryProducts from '../components/CategoryProducts';
+import { useParams } from 'react-router-dom';
 
 const Container = styled.div`
     width: 100vw;
@@ -15,18 +15,13 @@ const Container = styled.div`
     justify-content: center;
 `
 
-const Headphones = () => {
-  const headphones = data.filter((item) => item.category === 'headphones');
+const Category = () => {
+    const { id } = useParams()
+
   return (
     <Container>
-      <CategoryHero category={"headphones"}/>{
-        headphones.map((item) => {
-         return <div key={item.id}>
-            <h2>{item.name}</h2>
-            <p>{item.description}</p>
-        </div>
-        })
-      }
+      <CategoryHero category={`${id}`}/>
+      <CategoryProducts category={`${id}`}/>
       <Categories />
       <About />
       <Footer />
@@ -34,4 +29,4 @@ const Headphones = () => {
   )
 }
 
-export default Headphones
+export default Category

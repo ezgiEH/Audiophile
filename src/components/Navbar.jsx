@@ -60,9 +60,9 @@ const Navbar = () => {
            </Logo>
            <Menu>
             <MenuItem><Link to="/" className='menu'>Home</Link></MenuItem>
-            <MenuItem><Link to="/headphones" className='menu'>Headphones</Link></MenuItem>
-            <MenuItem><Link to="/speakers" className='menu'>Speakers</Link></MenuItem>
-            <MenuItem><Link to="/earphones" className='menu'>Earphones</Link></MenuItem>
+            <MenuItem><Link to="/category/headphones" className='menu'>Headphones</Link></MenuItem>
+            <MenuItem><Link to="/category/speakers" className='menu'>Speakers</Link></MenuItem>
+            <MenuItem><Link to="/category/earphones" className='menu'>Earphones</Link></MenuItem>
            </Menu>
            <Cart>
             <img src={CartIcon} alt="cart"/>

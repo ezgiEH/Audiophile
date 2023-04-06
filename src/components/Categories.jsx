@@ -13,7 +13,6 @@ const Container = styled.div`
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    
 `
 
 const Wrapper = styled.div`
@@ -51,12 +50,14 @@ const Image = styled.img`
 
 const Header = styled.h6`
     margin: 10px 0;
+    color: var(--Main-Black);
     text-transform: uppercase;
 `
 const Span = styled.span`
     width: 70px;
     text-transform: uppercase;
     font-weight: 700;
+    color: var(--Main-Black);
     opacity: .5;
     display: flex;
     align-items: center;
@@ -68,7 +69,7 @@ const Categories = () => {
         <Container>
             <Wrapper>
                 <CategoryItem>
-                    <Link to="/headphones">
+                    <Link to="/category/headphones">
                         <Box>
                             <Image src={Headphones}></Image>
                             <Header>Headphones</Header>
@@ -77,7 +78,7 @@ const Categories = () => {
                     </Link>
                 </CategoryItem>
                 <CategoryItem>
-                    <Link to="/speakers">
+                    <Link to="/category/speakers">
                         <Box>
                             <Image src={Speakers}></Image>
                             <Header>Speakers</Header>
@@ -86,7 +87,7 @@ const Categories = () => {
                     </Link>
                 </CategoryItem>
                 <CategoryItem>
-                    <Link to="/earphones">
+                    <Link to="/category/earphones">
                         <Box>
                             <Image src={Earphones}></Image>
                             <Header>Earphones</Header>

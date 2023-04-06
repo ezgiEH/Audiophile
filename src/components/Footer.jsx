@@ -72,9 +72,9 @@ const Footer = () => {
                 <Logo>audophile</Logo>
                 <Menu>
                     <Link to="/" className='menu'>Home</Link>
-                    <Link to="/headphones" className='menu'>Headphones</Link>
-                    <Link to="/speakers" className='menu'>Speakers</Link>
-                    <Link to="/earphones" className='menu'>Earphones</Link>
+                    <Link to="/category/headphones" className='menu'>Headphones</Link>
+                    <Link to="/category/speakers" className='menu'>Speakers</Link>
+                    <Link to="/category/earphones" className='menu'>Earphones</Link>
                 </Menu>
             </FooterMenu>
             <FooterContent>
