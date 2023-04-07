@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import data from '../data.json'
 import styled from 'styled-components'
+import { useDispatch } from 'react-redux'
+import { addProduct } from '../redux/CartRedux'
 
 const Container = styled.div`
     width: 100vw;
@@ -43,7 +45,7 @@ const Span = styled.span`
     text-transform: uppercase;
     letter-spacing: 10px;
     font-weight: 400;
-    color: var(--Main-Orange)
+    color: var(--Main-Orange);
 `
 
 const Header = styled.h1`
@@ -66,7 +68,8 @@ const Buttons = styled.div`
     margin-top: 24px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 32px;
 `
 const AmountContainer = styled.div`
     width: 120px;
@@ -77,6 +80,7 @@ const AmountContainer = styled.div`
     background-color: var(--Main-Gray);
     border-radius: var(--Main-border-radius);
     overflow: hidden;
+
 `
 const Amount = styled.span`
     width: 40px;
@@ -96,7 +100,7 @@ const AmountButton = styled.div`
     cursor: pointer;
 
     &:hover{
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        box-shadow: var(--Box-Shadow);
         color: var(--Main-Orange);
     }
 `
@@ -116,7 +120,7 @@ const AddButton = styled.button`
 const FeaturesBox = styled.div`
     margin: 5vh 0;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 `
 
@@ -182,10 +186,62 @@ const GalleryImage = styled.img`
         opacity: .8;
     }
 `
+const LikeBox = styled.div`
+    margin: 10vh 0 ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+`
+const ItemContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+`
 
-
+const BoxItem = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`
+const BoxImage = styled.img`
+    width: 350px;
+    height: 318px;
+    object-fit: contain;
+    border-radius: var(--Main-border-radius);
+`
+const BoxButton = styled.a`
+    padding: 16px 30px;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border: none;
+    background-color: var(--Main-Orange);
+    color: var(--Main-White);
+    box-shadow: var(--Box-Shadow);
+    cursor: pointer;
+`
 const Product = ({ id }) => {
     const product = data[id - 1]
+    const [quantity, setQuantity] = useState(1)
+    const dispatch = useDispatch()
+
+
+    const handleQuantity = (type) => {
+        if (type === "dec") {
+            quantity > 1 && setQuantity(quantity - 1)
+        }
+        else {
+            setQuantity(quantity + 1)
+        }
+    }
+
+    const handleClick = () =>{
+        dispatch(addProduct({...product, quantity}))
+    }
 
     return (
         <Container>
@@ -201,45 +257,59 @@ const Product = ({ id }) => {
                         <Price>${product.price}</Price>
                         <Buttons>
                             <AmountContainer>
-                                <AmountButton>-</AmountButton>
-                                <Amount>1</Amount>
-                                <AmountButton>+</AmountButton>
+                                <AmountButton onClick={() => handleQuantity("dec")}>-</AmountButton>
+                                <Amount>{quantity}</Amount>
+                                <AmountButton onClick={() => handleQuantity("inc")}>+</AmountButton>
                             </AmountContainer>
-                            <AddButton>ADD TO CART</AddButton>
-                    </Buttons>
-                </InfoSection>
-            </ProductBox>
-            <FeaturesBox>
-                <Features>
-                    <Header as={"h3"}>Features</Header>
-                    <Text>{product.features}</Text>
-                </Features>
-                <InTheBox>
-                    <Header as={"h3"}>In the Box</Header>
-                    <div>
-                        {product.includes.map(item => {
-                            return <Item>
-                                <ItemSpan>{item.quantity}X</ItemSpan>
-                                <Text>{item.item}</Text>
-                            </Item>
-                        })}
-                    </div>
-                </InTheBox>
-            </FeaturesBox>
-            <ImageBox>
-                <LeftColumn>
-                    <First>
-                        <GalleryImage src={product.gallery.first.desktop}></GalleryImage>
-                    </First>
-                    <Second>
-                        <GalleryImage src={product.gallery.second.desktop}></GalleryImage>
-                    </Second>
-                </LeftColumn>
-                <Third>
-                    <GalleryImage src={product.gallery.third.desktop}></GalleryImage>
-                </Third>
-            </ImageBox>
-        </Wrapper>
+                            <AddButton onClick={() => handleClick()}>ADD TO CART</AddButton>
+                        </Buttons>
+                    </InfoSection>
+                </ProductBox>
+                <FeaturesBox>
+                    <Features>
+                        <Header as={"h3"}>Features</Header>
+                        <Text>{product.features}</Text>
+                    </Features>
+                    <InTheBox>
+                        <Header as={"h3"}>In the Box</Header>
+                        <div>
+                            {product.includes.map(item => {
+                                return <Item>
+                                    <ItemSpan>{item.quantity}X</ItemSpan>
+                                    <Text>{item.item}</Text>
+                                </Item>
+                            })}
+                        </div>
+                    </InTheBox>
+                </FeaturesBox>
+                <ImageBox>
+                    <LeftColumn>
+                        <First>
+                            <GalleryImage src={product.gallery.first.desktop}></GalleryImage>
+                        </First>
+                        <Second>
+                            <GalleryImage src={product.gallery.second.desktop}></GalleryImage>
+                        </Second>
+                    </LeftColumn>
+                    <Third>
+                        <GalleryImage src={product.gallery.third.desktop}></GalleryImage>
+                    </Third>
+                </ImageBox>
+                <LikeBox>
+                    <Header as={"h2"}>you may also like</Header>
+                    <ItemContainer>
+                        {
+                            product.others.map(item => {
+                                return <BoxItem key={item.name}>
+                                    <BoxImage src={item.image.desktop}></BoxImage>
+                                    <Header as={"h3"}>{item.name}</Header>
+                                    <BoxButton>See Product</BoxButton>
+                                </BoxItem>
+                            })
+                        }
+                    </ItemContainer>
+                </LikeBox>
+            </Wrapper>
         </Container >
     )
 }

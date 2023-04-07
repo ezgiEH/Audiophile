@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import CartIcon from '../assets/shared/desktop/icon-cart.svg'
+import Cart from './Cart'
 
 const Container = styled.div`
     width: 100vw;
@@ -45,13 +46,37 @@ const MenuItem = styled.a`
     cursor: pointer;
 `
 
-const Cart = styled.div`
+const CartContainer = styled.div`
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    position: relative;
+`
+const CartButton = styled.button`
+    background: transparent;
+    border: none;
+    width: 25px;
+    height: 20px;
+`
+const CartModal = styled.div`
+    position: absolute;
+    padding: 24px;
+    width: 24vw;
+    min-height: 10vh;
+    top: 4vh;
+    background: var(--Main-White);
+    border-radius: var(--Main-border-radius);
+    box-shadow: var(--Box-Shadow);
+    z-index: 2;
 `
 const Navbar = () => {
+    const [open, setOpen] = useState("none")
+
+    const handleClick = () =>{
+        open === "none" ? setOpen("block") : setOpen("none")
+    }
+
   return (
     <Container>
         <Wrapper>
@@ -64,9 +89,14 @@ const Navbar = () => {
             <MenuItem><Link to="/category/speakers" className='menu'>Speakers</Link></MenuItem>
             <MenuItem><Link to="/category/earphones" className='menu'>Earphones</Link></MenuItem>
            </Menu>
-           <Cart>
-            <img src={CartIcon} alt="cart"/>
-           </Cart>
+           <CartContainer>
+            <CartButton onClick={() => handleClick()}>
+                <img src={CartIcon} alt="cart"/>
+            </CartButton>
+            <CartModal style={{display: `${open}`}}>
+                <Cart />
+            </CartModal>
+           </CartContainer>
         </Wrapper>
     </Container>
   )

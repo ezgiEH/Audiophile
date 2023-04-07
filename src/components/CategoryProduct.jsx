@@ -63,6 +63,7 @@ const Button = styled.a`
     color: var(--Main-White);
     text-transform: uppercase;
     font-weight: 700;
+    box-shadow: var(--Box-Shadow);
     cursor: pointer;
 `
 

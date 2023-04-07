@@ -7,7 +7,7 @@
   --Second-Orange: rgb(251,175,133);
   --Second-White: rgb(255,255,255);
   --Second-Black: rgb(0,0,0);
-
+  --Box-Shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   /* Fonts */
   --Main-Font: 'Manrope', sans-serif;
   --H1-Fontsize: 56px;

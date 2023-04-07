@@ -48,7 +48,7 @@ const FooterContent = styled.div`
     align-items: center;
 `
 const Text = styled.p`
-    flex: 1;    
+    flex: 1;
 `
 const Social = styled.div`
     flex: 1;
@@ -90,7 +90,7 @@ const Footer = () => {
                 <SocialLink><img src={Instagram} alt="instagram"></img></SocialLink>
             </Social>
             </FooterContent>
-            <Text>Copyright 2021. All Rights Reserved</Text>
+            <Text >Copyright 2021. All Rights Reserved</Text>
         </Wrapper>
     </Container>
   )
