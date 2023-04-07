@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import CartIcon from '../assets/shared/desktop/icon-cart.svg'
 import Cart from './Cart'
+import { useSelector } from 'react-redux'
 
 const Container = styled.div`
     width: 100vw;
@@ -52,6 +53,7 @@ const CartContainer = styled.div`
     align-items: center;
     justify-content: flex-end;
     position: relative;
+    cursor: pointer;
 `
 const CartButton = styled.button`
     background: transparent;
@@ -70,7 +72,18 @@ const CartModal = styled.div`
     box-shadow: var(--Box-Shadow);
     z-index: 2;
 `
+
+const Badge = styled.span`
+    background: var(--Main-Orange);
+    color: var(--Main-White);
+    padding: 0 8px;
+    border-radius: 50%;
+    position: absolute;
+    right: -20px;
+    top: -10px;
+`
 const Navbar = () => {
+    const badge = useSelector(state => state.cart.quantity)
     const [open, setOpen] = useState("none")
 
     const handleClick = () =>{
@@ -90,6 +103,7 @@ const Navbar = () => {
             <MenuItem><Link to="/category/earphones" className='menu'>Earphones</Link></MenuItem>
            </Menu>
            <CartContainer>
+            {badge > 0 && <Badge>{badge}</Badge>}
             <CartButton onClick={() => handleClick()}>
                 <img src={CartIcon} alt="cart"/>
             </CartButton>

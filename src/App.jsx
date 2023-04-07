@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Navbar from './components/Navbar';
 import Category from './pages/Category';
 import ProductDetail from './pages/ProductDetail';
+import Checkout from './pages/Checkout';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route path= "/category/:id" element={<Category />} />
         <Route path="/products/:id" element={<ProductDetail />}/>
+        <Route path="/checkout" element={<Checkout />}/>
       </Routes>
     </Router>
     

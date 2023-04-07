@@ -57,7 +57,7 @@ const ItemHeader = styled.p`
 
 const Text = styled.p`
     margin: 0;
-    font-size: 14px;
+    font-size: ${props => props.bold ? "18px" : "14px"};
     font-weight: ${props => props.bold ? 700 : 400};
 `
 
@@ -162,7 +162,7 @@ return (
             </TotalPrice>
         </CartItemList>
         <CartButton>
-           <Link to="">Checkout</Link> 
+           <Link to="/checkout">Checkout</Link> 
         </CartButton>
     </Container>
   )
