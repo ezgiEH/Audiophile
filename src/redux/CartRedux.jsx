@@ -6,7 +6,7 @@ const cartSlice = createSlice({
         products:JSON.parse(localStorage.getItem("cart")) || [],
         quantity: JSON.parse(localStorage.getItem("cart.quantity")) || 0,
         total: JSON.parse(localStorage.getItem("cart.total")) || 0,
-        order: JSON.parse(localStorage.getItem("cart.order")) || []
+        order: JSON.parse(localStorage.getItem("order")) || []
     },
     reducers: {
         //add cart
@@ -32,9 +32,20 @@ const cartSlice = createSlice({
         payment: (state, action) =>{
             state.order = {"paymentInfo" : action.payload, "orderedProduct" : state.products}
             localStorage.setItem('order', JSON.stringify(state.order))
+        },
+        //Remove Order
+        removeOrder: (state, action) =>{
+            state.products = []
+            state.quantity = 0
+            state.total = 0
+            // state.order = []
+            localStorage.removeItem("cart");
+            localStorage.removeItem("cart.quantity");
+            localStorage.removeItem("cart.total");
+            // localStorage.removeItem("order");
         }
     },
 })
 
-export const { addProduct,  removeAllProduct, payment } = cartSlice.actions
+export const { addProduct,  removeAllProduct, payment , removeOrder} = cartSlice.actions
 export default cartSlice.reducer

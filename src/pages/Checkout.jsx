@@ -14,6 +14,8 @@ const Container = styled.div`
     justify-content: center;
     gap: 5vh;
     background-color: var(--Main-Gray);
+    position: relative;
+
 `
 const PayContainer = styled.div`
     width: 80vw;

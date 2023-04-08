@@ -1,9 +1,10 @@
-import React from 'react'
-import { Formik , Form} from 'formik'
+import React, { useEffect, useState } from 'react'
+import { Formik, Form } from 'formik'
 import * as Yup from 'yup';
 import styled from 'styled-components'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { payment } from '../redux/CartRedux';
+import OrderModal from './OrderModal';
 
 const Container = styled.div`
   width: 100%;
@@ -93,13 +94,24 @@ const PayButton = styled.button`
     box-shadow: var(--Box-shadow);
     cursor: pointer;
 `
+const ModalContainer = styled.div`
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(1, 1 , 1, .5);
 
+`
 
 const CheckoutForm = () => {
 
-  const dispatch =useDispatch()
-
-
+  const dispatch = useDispatch()
+  const order = useSelector(state => state.cart.order)
+  const [open, setOpen] = useState("none")
+  console.log(order);
   const validationSchema = Yup.object({
     name: Yup.string().required("It's not be Empty!"),
     email: Yup.string().email("Wrong Format!").required("It's not be Empty!"),
@@ -114,8 +126,13 @@ const CheckoutForm = () => {
 
   })
 
+ 
   return (
     <Container>
+      <ModalContainer style={{display: `${open}`}}>
+        {/* {order.length > 0 ? <OrderModal/> : <></>} */}
+        <OrderModal/>
+      </ModalContainer>
       <Header>Checkout</Header>
       <Formik
         initialValues={{
@@ -134,6 +151,7 @@ const CheckoutForm = () => {
         onSubmit={values => {
           console.log(values);
           dispatch(payment(values))
+          setOpen("flex")
         }}
       >
         {({ handleSubmit, handleChange, values, errors }) => (
@@ -173,46 +191,46 @@ const CheckoutForm = () => {
             </BillingDetail>
             <Header form>Shipping Info</Header>
             <ShippingInfo>
-            <FormItem full>
-              <Label>Address <Error>{errors.address && errors.address}</Error></Label>
-              <Input
+              <FormItem full>
+                <Label>Address <Error>{errors.address && errors.address}</Error></Label>
+                <Input
                   type='textarea'
                   name='address'
-                  placeholder='1137 Williams Avenue' 
+                  placeholder='1137 Williams Avenue'
                   onChange={handleChange}
                   values={values.address}
-              />
-            </FormItem>
-            <FormItem>
-              <Label>ZIP code <Error>{errors.zipcode && errors.zipcode}</Error></Label>
-              <Input 
+                />
+              </FormItem>
+              <FormItem>
+                <Label>ZIP code <Error>{errors.zipcode && errors.zipcode}</Error></Label>
+                <Input
                   type='number'
                   name='zipcode'
                   placeholder='10001'
                   onChange={handleChange}
                   values={values.zipcode}
-              />
-            </FormItem>
-            <FormItem>
-              <Label>City <Error>{errors.city && errors.city}</Error></Label>
-              <Input 
-                type='text'
-                name='city'
-                placeholder='New York'
-                onChange={handleChange}
-                values={values.city}
-              />
-            </FormItem>
-            <FormItem>
-              <Label>Country <Error>{errors.country && errors.country}</Error></Label>
-              <Input 
-                type='text'
-                name='country'
-                placeholder='United States'
-                onChange={handleChange}
-                values={values.country}
-              />
-            </FormItem>
+                />
+              </FormItem>
+              <FormItem>
+                <Label>City <Error>{errors.city && errors.city}</Error></Label>
+                <Input
+                  type='text'
+                  name='city'
+                  placeholder='New York'
+                  onChange={handleChange}
+                  values={values.city}
+                />
+              </FormItem>
+              <FormItem>
+                <Label>Country <Error>{errors.country && errors.country}</Error></Label>
+                <Input
+                  type='text'
+                  name='country'
+                  placeholder='United States'
+                  onChange={handleChange}
+                  values={values.country}
+                />
+              </FormItem>
             </ShippingInfo>
             <Header form>Payment Detail</Header>
             <PaymentDetail>
@@ -230,8 +248,8 @@ const CheckoutForm = () => {
                 />
               </FormItem>*/}
               <FormItem>
-              <Label>E-Money Number <Error>{errors.eMoneyNumber && errors.eMoneyNumber}</Error></Label>
-                <Input 
+                <Label>E-Money Number <Error>{errors.eMoneyNumber && errors.eMoneyNumber}</Error></Label>
+                <Input
                   type='number'
                   name='eMoneyNumber'
                   placeholder='238521993'
@@ -240,7 +258,7 @@ const CheckoutForm = () => {
                 />
               </FormItem>
               <FormItem>
-              <Label>E-Money Pin <Error>{errors.eMoneyPin && errors.eMoneyPin}</Error></Label>
+                <Label>E-Money Pin <Error>{errors.eMoneyPin && errors.eMoneyPin}</Error></Label>
                 {/* <Input 
                   type='number'
                   name='eMoneypin'
@@ -249,7 +267,7 @@ const CheckoutForm = () => {
                   values={values.eMoneyPin}
                 /> */}
               </FormItem>
-            </PaymentDetail> 
+            </PaymentDetail>
             <PayButton type="submit">Continue & Pay</PayButton>
           </Form>
         )}

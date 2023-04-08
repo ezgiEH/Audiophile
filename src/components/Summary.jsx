@@ -74,7 +74,7 @@ const PayButton = styled.button`
     font-weight: 700;
     letter-spacing: 2px;
     border: none;
-    box-shadow: var(--Box-shadow);
+    box-shadow: var(--Box-Shadow);
     cursor: pointer;
 `
 
