@@ -47,7 +47,10 @@ const Input = styled.input`
   border-radius: var(--Main-border-radius);
   border: 1px solid var(--Line-Gray);
   background: transparent;
-  color: var(--Line-Gray);
+  &:focus{
+    border: 1px solid transparent;
+    outline: 1px solid var(--Main-Orange);
+  }
 `
 const Label = styled.label`
   width: 95%;
@@ -98,16 +101,16 @@ const CheckoutForm = () => {
 
 
   const validationSchema = Yup.object({
-    name: Yup.string().required("Do not be Empty!"),
-    email: Yup.string().email("Wrong Format!").required("Do not be Empty!"),
-    phone: Yup.number().required("Do not be Empty!"),
-    address: Yup.string().required("Do not be Empty!"),
-    zipcode: Yup.number().required("Do not be Empty!"),
-    city: Yup.string().required("Do not be Empty!"),
-    country: Yup.string().required("Do not be Empty!"),
-    // method: Yup.string().required("Do not be Empty!"),
-    eMoneyNumber: Yup.number().required("Do not be Empty!"),
-    eMoneyPin: Yup.number().required("Do not be Empty!"),
+    name: Yup.string().required("It's not be Empty!"),
+    email: Yup.string().email("Wrong Format!").required("It's not be Empty!"),
+    phone: Yup.number().required("It's not be Empty!"),
+    address: Yup.string().required("It's not be Empty!"),
+    zipcode: Yup.number().required("It's not be Empty!"),
+    city: Yup.string().required("It's not be Empty!"),
+    country: Yup.string().required("It's not be Empty!"),
+    // method: Yup.string().required("It's not be Empty!"),
+    eMoneyNumber: Yup.number().required("It's not be Empty!"),
+    // eMoneyPin: Yup.number().required("It's not be Empty!"),
 
   })
 
@@ -125,7 +128,7 @@ const CheckoutForm = () => {
           country: "",
           // method: "",
           eMoneyNumber: "",
-          eMoneyPin: ""
+          // eMoneyPin: ""
         }}
         validationSchema={validationSchema}
         onSubmit={values => {
@@ -238,13 +241,13 @@ const CheckoutForm = () => {
               </FormItem>
               <FormItem>
               <Label>E-Money Pin <Error>{errors.eMoneyPin && errors.eMoneyPin}</Error></Label>
-                <Input 
+                {/* <Input 
                   type='number'
                   name='eMoneypin'
                   placeholder='6891'
                   onChange={handleChange}
                   values={values.eMoneyPin}
-                />
+                /> */}
               </FormItem>
             </PaymentDetail> 
             <PayButton type="submit">Continue & Pay</PayButton>
