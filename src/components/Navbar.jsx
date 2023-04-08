@@ -53,13 +53,13 @@ const CartContainer = styled.div`
     align-items: center;
     justify-content: flex-end;
     position: relative;
-    cursor: pointer;
 `
 const CartButton = styled.button`
     background: transparent;
     border: none;
     width: 25px;
     height: 20px;
+    cursor: pointer;
 `
 const CartModal = styled.div`
     position: absolute;

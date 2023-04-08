@@ -17,6 +17,7 @@ const Container = styled.div`
 `
 const PayContainer = styled.div`
     width: 80vw;
+    margin: 10vh 0;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;

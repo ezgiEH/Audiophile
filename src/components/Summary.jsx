@@ -51,10 +51,13 @@ const Text = styled.p`
     margin: 2px 0;
     font-weight: ${props => props.bold ? 700 : 400};
     font-size: ${props => props.bold ? "18px" : "16px"};
-    color: ${props => props.primary? "var(--Main-Orange)" : "var(--Main-Black)"};
+    color: ${props => props.primary ? "var(--Main-Orange)" : "var(--Main-Black)"};
 `
 const Amount = styled.span`
     font-weight: 700;
+`
+const PriceTotal = styled.div`
+    width: 100%;
 `
 const PriceBox = styled.div`
     width: 100%;
@@ -81,39 +84,41 @@ const Summary = () => {
 
     const items = useSelector(state => state.cart.products)
     const total = useSelector(state => state.cart.total)
-  return (
-    <Container>
-        <Header>Summary</Header>
-        <SummaryItems>
-            {
-                items.map(item => {
-                    return <Item key={item.id}>
-                    <Image src={item.image.mobile}></Image>
-                    <Info>
-                        <Text bold>{item.name.split(" ", 1)}</Text>
-                        <Text>${item.price}</Text>
-                    </Info>
-                    <Amount>x{item.quantity}</Amount>
-                </Item>
-                })
-            }
-            
-        </SummaryItems>
-        <PriceBox>
-            <Text>TOTAL</Text>
-            <Text bold>${total}</Text>
-        </PriceBox>
-        <PriceBox>
-            <Text>SHIPPING</Text>
-            <Text bold>$50</Text>
-        </PriceBox>
-        <PriceBox>
-            <Text>GRAND TOTAL</Text>
-            <Text bold primary>${total + 50}</Text>
-        </PriceBox>
-        <PayButton>Continue & Pay</PayButton>
-    </Container>
-  )
+    return (
+        <Container>
+            <Header>Summary</Header>
+            <SummaryItems>
+                {
+                    items.map(item => {
+                        return <Item key={item.id}>
+                            <Image src={item.image.mobile}></Image>
+                            <Info>
+                                <Text bold>{item.name.split(" ", 1)}</Text>
+                                <Text>${item.price}</Text>
+                            </Info>
+                            <Amount>x{item.quantity}</Amount>
+                        </Item>
+                    })
+                }
+
+            </SummaryItems>
+            <PriceTotal>
+                <PriceBox>
+                    <Text>TOTAL</Text>
+                    <Text bold>$ {total}</Text>
+                </PriceBox>
+                <PriceBox>
+                    <Text>SHIPPING</Text>
+                    <Text bold>$ 50</Text>
+                </PriceBox>
+                <PriceBox>
+                    <Text>GRAND TOTAL</Text>
+                    <Text bold primary>$ {total + 50}</Text>
+                </PriceBox>
+            </PriceTotal>
+            <PayButton>Continue & Pay</PayButton>
+        </Container>
+    )
 }
 
 export default Summary

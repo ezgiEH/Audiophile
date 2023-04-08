@@ -158,7 +158,7 @@ return (
             }
             <TotalPrice>
                 <Text>TOTAL</Text>
-                <Text bold>${total}</Text>
+                <Text bold>{total > 0 && `$ ${total}`}</Text>
             </TotalPrice>
         </CartItemList>
         <CartButton>
