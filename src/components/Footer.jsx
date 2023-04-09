@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Facebook from '../assets/shared/desktop/icon-facebook.svg'
 import Instagram from '../assets/shared/desktop/icon-instagram.svg'
 import Twitter from '../assets/shared/desktop/icon-twitter.svg'
+import {mobile, tablet} from '../responsive'
 
 
 const Container = styled.div`
@@ -28,6 +29,9 @@ const FooterMenu = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    ${mobile({
+        flexDirection: "column",
+    })}
 `
 const Logo = styled.h4`
     line-height: 10vh;
@@ -40,15 +44,27 @@ const Menu = styled.div`
     align-items: center;
     justify-content: flex-end;
     gap: 2vw;
+    ${mobile({
+        margin: "32px",
+        flexDirection: "column",
+        gap: "32px",
+    })}
 `
-
 
 const FooterContent = styled.div`
     display: flex;
     align-items: center;
+    ${mobile({
+        flexDirection: "column",
+        gap: "32px",
+    })}
 `
 const Text = styled.p`
-    flex: 1;
+    font-size: ${props => props.small ?"12px" : "15px"};
+    ${mobile({
+        textAlign: "center",
+        opacity: ".6",
+    })}
 `
 const Social = styled.div`
     flex: 1;
@@ -56,6 +72,9 @@ const Social = styled.div`
     align-items: center;
     justify-content: flex-end;
     gap: 2vw;
+    ${mobile({
+        gap: "32px",
+    })}
 `
 const SocialLink = styled.a`
     
@@ -90,7 +109,7 @@ const Footer = () => {
                 <SocialLink><img src={Instagram} alt="instagram"></img></SocialLink>
             </Social>
             </FooterContent>
-            <Text >Copyright 2021. All Rights Reserved</Text>
+            <Text small>Copyright 2023. All Rights Reserved</Text>
         </Wrapper>
     </Container>
   )

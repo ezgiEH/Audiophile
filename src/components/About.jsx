@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import AboutImage from '../assets/shared/desktop/image-best-gear.jpg'
+import {mobile, tablet} from '../responsive'
 
 const Container = styled.div`
     width: 100vw;
@@ -15,14 +16,23 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     gap: 5vw;
+    ${mobile({
+        flexDirection: "column-reverse",
+    })}
 `
 const ContentSection = styled.div`
     flex: 1;
-    
+    ${mobile({
+        width: "80vw",
+        textAlign: "center",
+    })}
 `
 const Header = styled.h2`
     text-transform: uppercase;
     padding-right: 110px;
+    ${mobile({
+       paddingRight: "0px",
+    })}
 `
 const Span = styled.span`
     color: var(--Main-Orange);
@@ -30,6 +40,9 @@ const Span = styled.span`
 const Text = styled.p`
     line-height:var(--Subtitle-Linepace);
     padding-right: 55px;
+    ${mobile({
+       paddingRight: "0px",
+    })}
 `
 const ImageSection = styled.div`
     flex: 1;

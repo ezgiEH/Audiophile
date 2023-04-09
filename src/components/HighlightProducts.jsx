@@ -2,8 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import ZX9 from '../assets/home/desktop/image-speaker-zx9.png'
-import ZX7 from '../assets/home/desktop/image-speaker-zx7.jpg'
+import ZX7 from '../assets/home/mobile/image-speaker-zx7.jpg'
 import YX1 from '../assets/home/desktop/image-earphones-yx1.jpg'
+import {mobile, tablet} from '../responsive'
 
 const Container = styled.div`
     width: 100vw;
@@ -32,6 +33,13 @@ const BigProduct = styled.div`
     justify-content: center;
     border-radius: var(--Main-border-radius);
     overflow: hidden;
+    ${mobile({
+        backgroundPosition: "top",
+        backgroundSize: "80vw",
+        height: "65vh",
+        flexDirection: "column",
+        
+    })}
 `
 
 const SecondProduct = styled.div`
@@ -39,12 +47,19 @@ const SecondProduct = styled.div`
     height: 30vh;
     background: url("../assets/home/desktop/image-speaker-zx7.jpg");
     background-size: cover;
-    background-rrepeat: no-repeat;
-    backgroun-posiiton: right;
+    background-repeat: no-repeat;
+    background-position: right;
     border-radius: var(--Main-border-radius);
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    ${mobile({
+        background: `url(${ZX7})`,
+        backgroundPosition: "right",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "55vh",
+        height: "50vh",
+    })}
 `
 const SmallProducts = styled.div`
     width: 100%;
@@ -53,6 +68,10 @@ const SmallProducts = styled.div`
     align-items: center;
     justify-content: flex-start;
     gap: 5vw;
+    ${mobile({
+        flexDirection: "column",
+        height: "50vh",
+    })}
 `
 const SmallProduct = styled.div`
     width: 50%;
@@ -64,9 +83,13 @@ const SmallProduct = styled.div`
     background: var(--Main-Gray);
     border-radius: var(--Main-border-radius);
     overflow: hidden;
+    ${mobile({
+        width: "100%",
+    })}
 `
 const SmallImage = styled.img`
     width: 100%;
+    height: 100%;
 `
 
 const ImageSection = styled.div`
@@ -78,16 +101,27 @@ const Image = styled.img`
     position: absolute;
     top: -13vh;
     left: 15vw;
+    ${mobile({
+        width: "40vw",
+        top: "30%",
+        left: "-18vw",
+    })}
 `
 const ContentSection = styled.div`
     width: 350px;
     padding: 0 110px;
+    ${mobile({
+        width: "70vw",
+        padding: "5vw",
+        textAlign: `${props => props.big ? "center" : "left" }`,
+    })}
 `
 
 const Header = styled.h1`
     color: var(--Main-White);
     margin: 25px 0;
     text-transform: uppercase;
+   
 `
 const HeaderTwo = styled.h2`
     color: var(--Main-Black);
@@ -115,7 +149,7 @@ const HighlightProducts = () => {
                     <ImageSection>
                         <Image src={ZX9}></Image>
                     </ImageSection>
-                    <ContentSection>
+                    <ContentSection big>
                         <Header>Zx9 Speaker</Header>
                         <Text>Upgrade to premium speakers that are
                             phenomenally built to deliver truly remarkable sound.</Text>
@@ -134,7 +168,7 @@ const HighlightProducts = () => {
                     </SmallProduct>
                     <SmallProduct>
                         <ContentSection>
-                            <HeaderTwo>Yx1 Earphones</HeaderTwo>
+                            <HeaderTwo >Yx1 Earphones</HeaderTwo>
                             <Button>See Product</Button>
                         </ContentSection>
                     </SmallProduct>

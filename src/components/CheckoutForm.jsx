@@ -111,6 +111,7 @@ const CheckoutForm = () => {
   const dispatch = useDispatch()
   const order = useSelector(state => state.cart.order)
   const [open, setOpen] = useState("none")
+
   console.log(order);
   const validationSchema = Yup.object({
     name: Yup.string().required("It's not be Empty!"),
@@ -130,8 +131,8 @@ const CheckoutForm = () => {
   return (
     <Container>
       <ModalContainer style={{display: `${open}`}}>
-        {/* {order.length > 0 ? <OrderModal/> : <></>} */}
-        <OrderModal/>
+        {order.paymentInfo === null ? <></>:
+        <OrderModal/> }
       </ModalContainer>
       <Header>Checkout</Header>
       <Formik
@@ -145,7 +146,7 @@ const CheckoutForm = () => {
           country: "",
           // method: "",
           eMoneyNumber: "",
-          // eMoneyPin: ""
+          eMoneyPin: ""
         }}
         validationSchema={validationSchema}
         onSubmit={values => {
@@ -259,13 +260,13 @@ const CheckoutForm = () => {
               </FormItem>
               <FormItem>
                 <Label>E-Money Pin <Error>{errors.eMoneyPin && errors.eMoneyPin}</Error></Label>
-                {/* <Input 
+                <Input 
                   type='number'
                   name='eMoneypin'
                   placeholder='6891'
                   onChange={handleChange}
                   values={values.eMoneyPin}
-                /> */}
+                />
               </FormItem>
             </PaymentDetail>
             <PayButton type="submit">Continue & Pay</PayButton>

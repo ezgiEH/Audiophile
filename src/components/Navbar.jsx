@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import CartIcon from '../assets/shared/desktop/icon-cart.svg'
 import Cart from './Cart'
+import MobileMenu from '../assets/shared/tablet/icon-hamburger.svg' 
 import { useSelector } from 'react-redux'
+import {mobile , tablet} from '../responsive'
+import Categories from './Categories'
+
 
 const Container = styled.div`
     width: 100vw;
@@ -22,19 +26,27 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: space-between;
     border-bottom: 2px solid var(--Main-Gray);
+    ${mobile({
+        width: "100vw",
+        padding: "0 16px",
+        position: "relative",
+    })}
 `
 
 const Logo = styled.div`
     flex: 1;
 `
-const H1 = styled.h3`
-    
+const Header = styled.h3`
+    margin: 0;
 `
 const Menu = styled.div`
     flex: 3;
     display: flex;
     align-items: center;
     justify-content: center;
+    ${mobile({
+        display: "none",
+    })}
 `
 const MenuItem = styled.a`
     width: 8vw;
@@ -82,19 +94,61 @@ const Badge = styled.span`
     right: -20px;
     top: -10px;
 `
+
+const MobileMenuContainer = styled.div`
+    display: none;
+    height: 100%;
+    background: rgba(1, 1 , 1, .5);
+    flex: 1;
+    ${mobile({
+        display: "flex",
+    })}
+`
+
+const MenuButton = styled.button`
+    background: transparent;
+    border: none;
+`
+
+const HamburgerMenu = styled.div`
+    position: absolute;
+    width: 100%;
+    top: 10vh;
+    left: 0;
+    background-color: var(--Main-White);
+    box-shadow: var(--Box-Shadow);
+    border-bottom-left-radius: var(--Main-border-radius);
+    border-bottom-right-radius: var(--Main-border-radius);
+    z-index: 2;
+`
+
+
 const Navbar = () => {
     const badge = useSelector(state => state.cart.quantity)
     const [open, setOpen] = useState("none")
+    const [menuOpen, setMenuOpen] = useState("none")
+
 
     const handleClick = () =>{
         open === "none" ? setOpen("block") : setOpen("none")
+    }
+    const handleMenuClick = () =>{
+        menuOpen === "none" ? setMenuOpen("flex") : setMenuOpen("none")
     }
 
   return (
     <Container>
         <Wrapper>
+            <MobileMenuContainer >
+                <MenuButton onClick={() => handleMenuClick()}>
+                    <img src={MobileMenu} alt='icon'></img>
+                </MenuButton>
+                <HamburgerMenu style={{display: `${menuOpen}`}}>
+                    <Categories />
+                </HamburgerMenu>
+            </MobileMenuContainer>
            <Logo>
-            <H1>audophile</H1>
+            <Header>audophile</Header>
            </Logo>
            <Menu>
             <MenuItem><Link to="/" className='menu'>Home</Link></MenuItem>

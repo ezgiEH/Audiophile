@@ -101,11 +101,11 @@ const Button = styled.button`
 const OrderModal = () => {
   const dispatch = useDispatch()
 
-  const order = useSelector(state => state.cart.order)
+  const order = useSelector(state => state.cart.order.orderedProduct)
   const total = useSelector(state => state.cart.total)
 
   const handleClick = () => {
-    dispatch(removeOrder())
+    // dispatch(removeOrder())
   }
 
   return (
@@ -116,14 +116,14 @@ const OrderModal = () => {
       <OrderContainer>
         <OrderBox>
           <Item>
-            <Image src={order.orderedProduct[0].image.mobile}/>
+            <Image src={order[0].image.mobile}/>
             <Info>
-              <Text bold>{order.orderedProduct[0].name.split(" ",2).join(" ")}</Text>
-              <Text>$ {order.orderedProduct[0].price}</Text>
+              <Text bold>{order[0].name.split(" ",2).join(" ")}</Text>
+              <Text>$ {order[0].price}</Text>
             </Info>
-            <Text>x {order.orderedProduct[0].quantity}</Text>
+            <Text>x {order[0].quantity}</Text>
           </Item>
-          <Text>and {order.orderedProduct.length - 1} other item(s)</Text>
+          <Text>and {order.length - 1} other item(s)</Text>
         </OrderBox>
         <TotalBox>
           <Text white>GRAND TOTAL</Text>
