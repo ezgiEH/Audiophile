@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik'
 import * as Yup from 'yup';
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux';
-import { payment } from '../redux/CartRedux';
+import { addOrder } from '../redux/CartRedux';
 import OrderModal from './OrderModal';
 import { mobile, tablet } from '../responsive'
 
@@ -135,8 +135,7 @@ const CheckoutForm = () => {
   return (
     <Container>
       <ModalContainer style={{ display: `${open}` }}>
-        {order.paymentInfo === null ? <></> :
-          <OrderModal />}
+        {order.orderedProduct.length > 0 ? <OrderModal/> : <></> }
       </ModalContainer>
       <Header>Checkout</Header>
       <Formik
@@ -155,7 +154,7 @@ const CheckoutForm = () => {
         validationSchema={validationSchema}
         onSubmit={values => {
           console.log(values);
-          dispatch(payment(values))
+          dispatch(addOrder(values))
           setOpen("flex")
         }}
       >

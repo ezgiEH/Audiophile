@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Ok from '../assets/checkout/icon-order-confirmation.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { removeOrder } from '../redux/CartRedux'
+import { removeAllProduct, removeOrder } from '../redux/CartRedux'
 import { mobile, tablet } from '../responsive'
 
 const Container = styled.div`
@@ -19,8 +19,8 @@ const Container = styled.div`
     justify-content: space-between;
     gap: 32px;
     ${mobile({
-        width:"80vw", 
-    })}
+  width: "80vw",
+})}
 `
 
 const Icon = styled.img``
@@ -32,7 +32,7 @@ const Header = styled.p`
   letter-spacing: 1.14px;
   font-weight: 700;
 `
-const Text  = styled.p`
+const Text = styled.p`
   margin: 0;
   font-weight: ${props => props.bold ? "700" : "500"};
   color: ${props => props.white ? "var(--Main-White)" : "var(--Main-Black)"};
@@ -47,8 +47,8 @@ const OrderContainer = styled.div`
   border-radius: var(--Main-border-radius);
   box-shadow: var(--Box-Shadow);
   ${mobile({
-        flexDirection:"column", 
-    })}
+  flexDirection: "column",
+})}
 `
 const OrderBox = styled.div`
   flex: 2;
@@ -59,8 +59,8 @@ const OrderBox = styled.div`
   padding: 16px;
   gap: 16px;
   ${mobile({
-        width: "80%", 
-    })}
+  width: "80%",
+})}
 `
 const Item = styled.div`
   width: 100%;
@@ -93,13 +93,13 @@ const TotalBox = styled.div`
   border-radius: var(--Main-border-radius);
   gap: 8px;
   ${mobile({
-        width: "calc(80vw - 32px)", 
-        flexDirection: "row",
-        justifyContent:"space-between",
-        borderRadius: "0",
-        borderBottomLeftRadius:"var(--Main-border-radius)",
-        borderBottomRightRadius:"var(--Main-border-radius)",
-  })}
+  width: "calc(80vw - 32px)",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  borderRadius: "0",
+  borderBottomLeftRadius: "var(--Main-border-radius)",
+  borderBottomRightRadius: "var(--Main-border-radius)",
+})}
 `
 
 const Button = styled.button`
@@ -123,20 +123,20 @@ const OrderModal = () => {
   const total = useSelector(state => state.cart.total)
 
   const handleClick = () => {
-    // dispatch(removeOrder())
+    dispatch(removeAllProduct())
   }
 
   return (
     <Container>
       <Icon src={Ok}></Icon>
-      <Header>THANK YOU <br/>FOR YOUR ORDER</Header>
+      <Header>THANK YOU <br />FOR YOUR ORDER</Header>
       <Text>You will receive an email confirmation shortly.</Text>
       <OrderContainer>
         <OrderBox>
           <Item>
-            <Image src={order[0].image.mobile}/>
+            <Image src={order[0].image.mobile} />
             <Info>
-              <Text bold>{order[0].name.split(" ",2).join(" ")}</Text>
+              <Text bold>{order[0].name.split(" ", 2).join(" ")}</Text>
               <Text>$ {order[0].price}</Text>
             </Info>
             <Text>x {order[0].quantity}</Text>

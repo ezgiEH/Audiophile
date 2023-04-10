@@ -28,24 +28,21 @@ const cartSlice = createSlice({
             localStorage.removeItem("cart.quantity");
             localStorage.removeItem("cart.total");
         },
-        //payment
-        payment: (state, action) =>{
+        //Add order
+        addOrder: (state, action) =>{
             state.order = {"paymentInfo" : action.payload, "orderedProduct" : state.products}
             localStorage.setItem('order', JSON.stringify(state.order))
         },
+       
         //Remove Order
         removeOrder: (state, action) =>{
             state.products = []
             state.quantity = 0
             state.total = 0
-            // state.order = []
-            localStorage.removeItem("cart");
-            localStorage.removeItem("cart.quantity");
-            localStorage.removeItem("cart.total");
-            // localStorage.removeItem("order");
+            localStorage.removeItem("order");
         }
     },
 })
 
-export const { addProduct,  removeAllProduct, payment , removeOrder} = cartSlice.actions
+export const { addProduct,  removeAllProduct, addOrder , removeOrder} = cartSlice.actions
 export default cartSlice.reducer

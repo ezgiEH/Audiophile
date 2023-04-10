@@ -141,39 +141,55 @@ const Cart = () => {
         dispatch(removeAllProduct())
     }
 
-    return (
-        <Container>
-            <CartHeader>
-                <Header>Cart ({cartItems.quantity})</Header>
-                <Remove onClick={() => handleRemove()}>Remove All</Remove>
-            </CartHeader>
-            <CartItemList>
-                {
-                    cartItems.products.map(item => {
-                        return <Item key={item.index}>
-                            <Image src={item.image.mobile}></Image>
-                            <ItemInfo>
-                                <ItemHeader>{item.name}</ItemHeader>
-                                <Text>${item.price}</Text>
-                            </ItemInfo>
-                            <AmountContainer>
-                                <AmountButton onClick={() => handleQuantity("dec")}>-</AmountButton>
-                                <Amount>{item.quantity}</Amount>
-                                <AmountButton onClick={() => handleQuantity("inc")}>+</AmountButton>
-                            </AmountContainer>
-                        </Item>
-                    })
-                }
-                <TotalPrice>
-                    <Text>TOTAL</Text>
-                    <Text bold>{total > 0 && `$ ${total}`}</Text>
-                </TotalPrice>
-            </CartItemList>
-            <CartButton>
-                <Link to="/checkout">Checkout</Link>
-            </CartButton>
-        </Container>
-    )
+    if (cartItems.products.length > 0) {
+        return (
+            <Container>
+                <CartHeader>
+                    <Header>Cart ({cartItems.quantity})</Header>
+                    <Remove onClick={() => handleRemove()}>Remove All</Remove>
+                </CartHeader>
+                <CartItemList>
+                    {
+                        cartItems.products.map(item => {
+                            return <Item key={item.index}>
+                                <Image src={item.image.mobile}></Image>
+                                <ItemInfo>
+                                    <ItemHeader>{item.name}</ItemHeader>
+                                    <Text>${item.price}</Text>
+                                </ItemInfo>
+                                <AmountContainer>
+                                    <AmountButton onClick={() => handleQuantity("dec")}>-</AmountButton>
+                                    <Amount>{item.quantity}</Amount>
+                                    <AmountButton onClick={() => handleQuantity("inc")}>+</AmountButton>
+                                </AmountContainer>
+                            </Item>
+                        })
+                    }
+                    <TotalPrice>
+                        <Text>TOTAL</Text>
+                        <Text bold>{total > 0 && `$ ${total}`}</Text>
+                    </TotalPrice>
+                </CartItemList>
+                <CartButton>
+                    <Link to="/checkout">Checkout</Link>
+                </CartButton>
+            </Container>
+        )
+    }
+    else {
+        return (
+            <Container>
+                <CartHeader>
+                    <Header>Cart ({cartItems.quantity})</Header>
+                </CartHeader>
+                <Text bold>Your Cart is Empty!</Text>
+                <CartButton>
+                    <Link to="/">Add Product</Link>
+                </CartButton>
+            </Container>
+        )
+    }
+
 }
 
 export default Cart
