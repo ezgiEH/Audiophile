@@ -4,6 +4,7 @@ import Ok from '../assets/checkout/icon-order-confirmation.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { removeOrder } from '../redux/CartRedux'
+import { mobile, tablet } from '../responsive'
 
 const Container = styled.div`
     width: 500px;
@@ -17,6 +18,9 @@ const Container = styled.div`
     align-items: flex-start;
     justify-content: space-between;
     gap: 32px;
+    ${mobile({
+        width:"80vw", 
+    })}
 `
 
 const Icon = styled.img``
@@ -42,6 +46,9 @@ const OrderContainer = styled.div`
   background-color: var(--Main-Gray);
   border-radius: var(--Main-border-radius);
   box-shadow: var(--Box-Shadow);
+  ${mobile({
+        flexDirection:"column", 
+    })}
 `
 const OrderBox = styled.div`
   flex: 2;
@@ -51,6 +58,9 @@ const OrderBox = styled.div`
   justify-content: center;
   padding: 16px;
   gap: 16px;
+  ${mobile({
+        width: "80%", 
+    })}
 `
 const Item = styled.div`
   width: 100%;
@@ -82,6 +92,14 @@ const TotalBox = styled.div`
   background: var(--Main-Black);
   border-radius: var(--Main-border-radius);
   gap: 8px;
+  ${mobile({
+        width: "calc(80vw - 32px)", 
+        flexDirection: "row",
+        justifyContent:"space-between",
+        borderRadius: "0",
+        borderBottomLeftRadius:"var(--Main-border-radius)",
+        borderBottomRightRadius:"var(--Main-border-radius)",
+  })}
 `
 
 const Button = styled.button`

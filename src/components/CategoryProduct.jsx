@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import {mobile, tablet} from '../responsive'
 
 
 const ItemBox = styled.div`
@@ -10,7 +11,13 @@ const ItemBox = styled.div`
     gap: 16px;
     &:nth-child(even){
         flex-direction: row-reverse;
+        ${mobile({
+        flexDirection: "column",
+    })}
     }
+    ${mobile({
+        flexDirection: "column",
+    })}
 `
 const ImageSection = styled.div`
     flex: 1;
@@ -25,6 +32,10 @@ const Image = styled.img`
     height: 560px;
     object-fit: fill;
     border-radius: var(--Main-border-radius);
+    ${mobile({
+        width: "327px",
+        height: "352px"
+    })}
 `
 const InfoSection = styled.div`
     flex: 1;
@@ -34,7 +45,12 @@ const InfoSection = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    
+    ${mobile({
+        alignItems: "center",
+        textAlign:"center",
+        width:"90vw",
+        padding: "32px"
+    })}
 `
 const Span = styled.span`
     text-transform: uppercase;

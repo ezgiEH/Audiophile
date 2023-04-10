@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
+import { mobile, tablet } from '../responsive'
 
 const Container = styled.div`
     width: 20vw;
@@ -13,9 +14,15 @@ const Container = styled.div`
     gap: 32px;
     border-radius: var(--Main-border-radius);
     box-shadow: var(--Box-shadow);
+    ${mobile({
+        width: "80vw"
+    })}
 `
 const Header = styled.h3`
     margin: 16px 0;
+    ${mobile({
+        margin: "8px 0",
+    })}
 `
 const SummaryItems = styled.div`
     display: flex;
@@ -45,7 +52,9 @@ const Info = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-
+    ${mobile({
+        width: "calc(80vw - 148px)"
+    })}
 `
 const Text = styled.p`
     margin: 2px 0;
@@ -64,19 +73,20 @@ const PriceBox = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-top: ${props => props.grand ? "1px solid var(--Line-Gray)" : "none"};
 `
-const PayButton = styled.button`
-    width: 100%;
-    padding: 16px;
-    background-color: var(--Main-Orange);
-    color: var(--Main-White);
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 2px;
-    border: none;
-    box-shadow: var(--Box-Shadow);
-    cursor: pointer;
-`
+// const PayButton = styled.button`
+//     width: 100%;
+//     padding: 16px;
+//     background-color: var(--Main-Orange);
+//     color: var(--Main-White);
+//     text-transform: uppercase;
+//     font-weight: 700;
+//     letter-spacing: 2px;
+//     border: none;
+//     box-shadow: var(--Box-Shadow);
+//     cursor: pointer;
+// `
 
 
 
@@ -111,12 +121,12 @@ const Summary = () => {
                     <Text>SHIPPING</Text>
                     <Text bold>$ 50</Text>
                 </PriceBox>
-                <PriceBox>
+                <PriceBox grand>
                     <Text>GRAND TOTAL</Text>
                     <Text bold primary>$ {total + 50}</Text>
                 </PriceBox>
             </PriceTotal>
-            <PayButton>Continue & Pay</PayButton>
+            {/* <PayButton>Continue & Pay</PayButton> */}
         </Container>
     )
 }

@@ -10,6 +10,7 @@
   --Second-White: rgb(255,255,255);
   --Second-Black: rgb(0,0,0);
   --Box-Shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  --Bg:rgba(1, 1 , 1, .5);
   /* Fonts */
   --Main-Font: 'Manrope', sans-serif;
   --H1-Fontsize: 56px;

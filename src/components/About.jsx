@@ -32,6 +32,8 @@ const Header = styled.h2`
     padding-right: 110px;
     ${mobile({
        paddingRight: "0px",
+       fontSize: "28px",
+       lineHeight: "28px",
     })}
 `
 const Span = styled.span`
@@ -54,6 +56,10 @@ const Image = styled.img`
     height: 100%;
     object-fit: cover;
     border-radius: var(--Main-border-radius);
+    ${mobile({
+        width: "327px",
+        height: "300px",
+    })}
 `
 
 const About = () => {

@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux';
 import { payment } from '../redux/CartRedux';
 import OrderModal from './OrderModal';
+import { mobile, tablet } from '../responsive'
 
 const Container = styled.div`
   width: 100%;
@@ -93,6 +94,9 @@ const PayButton = styled.button`
     border: none;
     box-shadow: var(--Box-shadow);
     cursor: pointer;
+    ${mobile({
+  width: "100%",
+})}
 `
 const ModalContainer = styled.div`
   position: absolute;
@@ -127,12 +131,12 @@ const CheckoutForm = () => {
 
   })
 
- 
+
   return (
     <Container>
-      <ModalContainer style={{display: `${open}`}}>
-        {order.paymentInfo === null ? <></>:
-        <OrderModal/> }
+      <ModalContainer style={{ display: `${open}` }}>
+        {order.paymentInfo === null ? <></> :
+          <OrderModal />}
       </ModalContainer>
       <Header>Checkout</Header>
       <Formik
@@ -260,7 +264,7 @@ const CheckoutForm = () => {
               </FormItem>
               <FormItem>
                 <Label>E-Money Pin <Error>{errors.eMoneyPin && errors.eMoneyPin}</Error></Label>
-                <Input 
+                <Input
                   type='number'
                   name='eMoneypin'
                   placeholder='6891'

@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import CartIcon from '../assets/shared/desktop/icon-cart.svg'
 import Cart from './Cart'
-import MobileMenu from '../assets/shared/tablet/icon-hamburger.svg' 
+import MobileMenu from '../assets/shared/tablet/icon-hamburger.svg'
 import { useSelector } from 'react-redux'
-import {mobile , tablet} from '../responsive'
+import { mobile, tablet } from '../responsive'
 import Categories from './Categories'
 
 
@@ -27,10 +27,10 @@ const Wrapper = styled.div`
     justify-content: space-between;
     border-bottom: 2px solid var(--Main-Gray);
     ${mobile({
-        width: "100vw",
-        padding: "0 16px",
-        position: "relative",
-    })}
+    width: "100vw",
+    padding: "0 32px",
+    position: "relative",
+})}
 `
 
 const Logo = styled.div`
@@ -45,8 +45,8 @@ const Menu = styled.div`
     align-items: center;
     justify-content: center;
     ${mobile({
-        display: "none",
-    })}
+    display: "none",
+})}
 `
 const MenuItem = styled.a`
     width: 8vw;
@@ -81,8 +81,12 @@ const CartModal = styled.div`
     top: 4vh;
     background: var(--Main-White);
     border-radius: var(--Main-border-radius);
-    box-shadow: var(--Box-Shadow);
+    box-shadow: var(--Box-Shadow); 
     z-index: 2;
+    ${mobile({
+    width: "80vw",
+    right: "-3.5vw",
+})}
 `
 
 const Badge = styled.span`
@@ -101,8 +105,8 @@ const MobileMenuContainer = styled.div`
     background: rgba(1, 1 , 1, .5);
     flex: 1;
     ${mobile({
-        display: "flex",
-    })}
+    display: "flex",
+})}
 `
 
 const MenuButton = styled.button`
@@ -129,45 +133,45 @@ const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState("none")
 
 
-    const handleClick = () =>{
+    const handleClick = () => {
         open === "none" ? setOpen("block") : setOpen("none")
     }
-    const handleMenuClick = () =>{
+    const handleMenuClick = () => {
         menuOpen === "none" ? setMenuOpen("flex") : setMenuOpen("none")
     }
 
-  return (
-    <Container>
-        <Wrapper>
-            <MobileMenuContainer >
-                <MenuButton onClick={() => handleMenuClick()}>
-                    <img src={MobileMenu} alt='icon'></img>
-                </MenuButton>
-                <HamburgerMenu style={{display: `${menuOpen}`}}>
-                    <Categories />
-                </HamburgerMenu>
-            </MobileMenuContainer>
-           <Logo>
-            <Header>audophile</Header>
-           </Logo>
-           <Menu>
-            <MenuItem><Link to="/" className='menu'>Home</Link></MenuItem>
-            <MenuItem><Link to="/category/headphones" className='menu'>Headphones</Link></MenuItem>
-            <MenuItem><Link to="/category/speakers" className='menu'>Speakers</Link></MenuItem>
-            <MenuItem><Link to="/category/earphones" className='menu'>Earphones</Link></MenuItem>
-           </Menu>
-           <CartContainer>
-            {badge > 0 && <Badge>{badge}</Badge>}
-            <CartButton onClick={() => handleClick()}>
-                <img src={CartIcon} alt="cart"/>
-            </CartButton>
-            <CartModal style={{display: `${open}`}}>
-                <Cart />
-            </CartModal>
-           </CartContainer>
-        </Wrapper>
-    </Container>
-  )
+    return (
+        <Container>
+            <Wrapper>
+                <MobileMenuContainer >
+                    <MenuButton onClick={() => handleMenuClick()}>
+                        <img src={MobileMenu} alt='icon'></img>
+                    </MenuButton>
+                    <HamburgerMenu style={{ display: `${menuOpen}` }}>
+                        <Categories />
+                    </HamburgerMenu>
+                </MobileMenuContainer>
+                <Logo>
+                    <Header>audophile</Header>
+                </Logo>
+                <Menu>
+                    <MenuItem><Link to="/" className='menu'>Home</Link></MenuItem>
+                    <MenuItem><Link to="/category/headphones" className='menu'>Headphones</Link></MenuItem>
+                    <MenuItem><Link to="/category/speakers" className='menu'>Speakers</Link></MenuItem>
+                    <MenuItem><Link to="/category/earphones" className='menu'>Earphones</Link></MenuItem>
+                </Menu>
+                <CartContainer>
+                    {badge > 0 && <Badge>{badge}</Badge>}
+                    <CartButton onClick={() => handleClick()}>
+                        <img src={CartIcon} alt="cart" />
+                    </CartButton>
+                    <CartModal style={{ display: `${open}` }}>
+                        <Cart />
+                    </CartModal>
+                </CartContainer>
+            </Wrapper>
+        </Container>
+    )
 }
 
 export default Navbar

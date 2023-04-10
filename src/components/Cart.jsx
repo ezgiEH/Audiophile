@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { removeAllProduct } from '../redux/CartRedux'
 import { Link } from 'react-router-dom'
+import { mobile, tablet } from '../responsive'
 
 const Container = styled.div`
     color: var(--Main-Black);
@@ -11,6 +12,7 @@ const Container = styled.div`
     align-items: flex-start;
     justify-content: center;
     gap: 16px;
+
 `
 const CartHeader = styled.div`
     width: 100%;
@@ -40,6 +42,9 @@ const Item = styled.div`
     align-items: center;
     justify-content: flex-start;
     gap: 16px;
+    ${mobile({
+    width: "80vw",
+})}
 `
 
 const Image = styled.img`
@@ -49,6 +54,9 @@ const Image = styled.img`
 `
 const ItemInfo = styled.div`
     width: calc(24vw - 176px);
+    ${mobile({
+    width: "calc(80vw - 176px)",
+})}
 `
 const ItemHeader = styled.p`
     margin: 0;
@@ -129,43 +137,43 @@ const Cart = () => {
         }
     }
 
-    const handleRemove= () =>{
+    const handleRemove = () => {
         dispatch(removeAllProduct())
     }
 
-return (
-    <Container>
-        <CartHeader>
-            <Header>Cart ({cartItems.quantity})</Header>
-            <Remove onClick={() => handleRemove()}>Remove All</Remove>
-        </CartHeader>
-        <CartItemList>
-            {
-                cartItems.products.map(item => {
-                    return <Item key={item.index}>
-                        <Image src={item.image.mobile}></Image>
-                        <ItemInfo>
-                            <ItemHeader>{item.name}</ItemHeader>
-                            <Text>${item.price}</Text>
-                        </ItemInfo>
-                        <AmountContainer>
+    return (
+        <Container>
+            <CartHeader>
+                <Header>Cart ({cartItems.quantity})</Header>
+                <Remove onClick={() => handleRemove()}>Remove All</Remove>
+            </CartHeader>
+            <CartItemList>
+                {
+                    cartItems.products.map(item => {
+                        return <Item key={item.index}>
+                            <Image src={item.image.mobile}></Image>
+                            <ItemInfo>
+                                <ItemHeader>{item.name}</ItemHeader>
+                                <Text>${item.price}</Text>
+                            </ItemInfo>
+                            <AmountContainer>
                                 <AmountButton onClick={() => handleQuantity("dec")}>-</AmountButton>
-                                    <Amount>{item.quantity}</Amount>
+                                <Amount>{item.quantity}</Amount>
                                 <AmountButton onClick={() => handleQuantity("inc")}>+</AmountButton>
-                        </AmountContainer>
-                    </Item>
-                })
-            }
-            <TotalPrice>
-                <Text>TOTAL</Text>
-                <Text bold>{total > 0 && `$ ${total}`}</Text>
-            </TotalPrice>
-        </CartItemList>
-        <CartButton>
-           <Link to="/checkout">Checkout</Link> 
-        </CartButton>
-    </Container>
-  )
+                            </AmountContainer>
+                        </Item>
+                    })
+                }
+                <TotalPrice>
+                    <Text>TOTAL</Text>
+                    <Text bold>{total > 0 && `$ ${total}`}</Text>
+                </TotalPrice>
+            </CartItemList>
+            <CartButton>
+                <Link to="/checkout">Checkout</Link>
+            </CartButton>
+        </Container>
+    )
 }
 
 export default Cart

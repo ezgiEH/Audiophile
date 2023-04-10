@@ -3,6 +3,8 @@ import data from '../data.json'
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
 import { addProduct } from '../redux/CartRedux'
+import { mobile, tablet } from '../responsive'
+import { useNavigate } from 'react-router-dom'
 
 const Container = styled.div`
     width: 100vw;
@@ -19,6 +21,9 @@ const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    ${mobile({
+    marginTop: "0px",
+})}
 `
 const ProductBox = styled.div`
     width: 100%;
@@ -26,9 +31,18 @@ const ProductBox = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    ${mobile({
+    flexDirection: "column",
+    height: "auto",
+})}
 `
 const ImageSection = styled.div`
     flex: 1;
+    ${mobile({
+    width: "327px",
+    height: "352px",
+    borderRadius: "var(--Main-border-radius)"
+})}
 `
 const Image = styled.img`
     width: 540px;
@@ -36,10 +50,19 @@ const Image = styled.img`
     object-fit: contain;
     border-radius: var(--Main-border-radius);
     cursor: crosshair;
+    ${mobile({
+    width: "100%",
+    height: "100%",
+    borderRadius: "var(--Main-border-radius)"
+})}
 `
 const InfoSection = styled.div`
     flex: 1;
     padding: 80px;
+    ${mobile({
+    width: "80vw",
+    padding: "32px"
+})}
 `
 const Span = styled.span`
     text-transform: uppercase;
@@ -51,6 +74,10 @@ const Span = styled.span`
 const Header = styled.h1`
     margin: 24px 0;
     text-transform: uppercase;
+    ${mobile({
+    fontSize: "28px",
+    lineHeight: "28px"
+})}
 `
 
 const Text = styled.p`
@@ -122,6 +149,10 @@ const FeaturesBox = styled.div`
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    ${mobile({
+    flexDirection: "column",
+    height: "auto",
+})}
 `
 
 const Features = styled.div`
@@ -158,6 +189,10 @@ const ImageBox = styled.div`
     justify-content: center;
     gap: 32px;
     cursor: crosshair;
+    ${mobile({
+    width: "80vw",
+    flexDirection: "column",
+})}
 `
 
 const LeftColumn = styled.div`
@@ -168,6 +203,10 @@ const LeftColumn = styled.div`
     justify-content: space-between;
     gap: 32px;
     overflow: hidden;
+    ${mobile({
+    width: "80vw",
+    flexDirection: "column",
+})}
 `
 
 const First = styled.div`
@@ -178,6 +217,9 @@ const Second = styled.div`
 `
 const Third = styled.div`
     overflow: hidden;
+    ${mobile({
+    width: "80vw",
+})}
 `
 
 const GalleryImage = styled.img`
@@ -185,6 +227,10 @@ const GalleryImage = styled.img`
     &:hover{
         opacity: .8;
     }
+    ${mobile({
+    width: "100%",
+    flexDirection: "column",
+})}
 `
 const LikeBox = styled.div`
     margin: 10vh 0 ;
@@ -193,12 +239,17 @@ const LikeBox = styled.div`
     align-items: center;
     justify-content: center;
     gap: 32px;
+    
 `
 const ItemContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 32px;
+     ${mobile({
+    width: "100%",
+    flexDirection: "column",
+})}
 `
 
 const BoxItem = styled.div`
@@ -206,15 +257,21 @@ const BoxItem = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+   
 `
 const BoxImage = styled.img`
     width: 350px;
     height: 318px;
     object-fit: contain;
     border-radius: var(--Main-border-radius);
+    ${mobile({
+    width: "327px",
+    height: "120px",
+    background: "var(--Main-Gray)",
+})}
 `
 const BoxButton = styled.a`
-    padding: 16px 30px;
+    padding: 12px 28px;
     text-transform: uppercase;
     font-weight: 500;
     letter-spacing: 1px;
@@ -224,6 +281,20 @@ const BoxButton = styled.a`
     box-shadow: var(--Box-Shadow);
     cursor: pointer;
 `
+
+const GoBackButton = styled.button`
+    background: transparent;
+    border: none;
+    align-self: flex-start;
+    color: var(--Line-Gray);
+    text-decoration: underline;
+    text-align: left;
+    cursor: pointer;
+    margin: 32px 0;
+`
+
+
+
 const Product = ({ id }) => {
     const product = data[id - 1]
     const [quantity, setQuantity] = useState(1)
@@ -239,13 +310,16 @@ const Product = ({ id }) => {
         }
     }
 
-    const handleClick = () =>{
-        dispatch(addProduct({...product, quantity}))
+    const handleClick = () => {
+        dispatch(addProduct({ ...product, quantity }))
     }
+
+    const navigate = useNavigate()
 
     return (
         <Container>
             <Wrapper>
+                <GoBackButton onClick={() => navigate(-1)}>Go Back</GoBackButton>
                 <ProductBox>
                     <ImageSection>
                         <Image src={product.image.desktop}></Image>

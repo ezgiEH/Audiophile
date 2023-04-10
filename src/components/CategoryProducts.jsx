@@ -2,8 +2,8 @@ import React from 'react'
 import CategoryProduct from './CategoryProduct';
 import data from '../data.json';
 import { useParams } from 'react-router-dom';
-
 import styled from 'styled-components'
+
 
 const Container = styled.div`
     width: 100vw;

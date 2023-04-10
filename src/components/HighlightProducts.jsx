@@ -102,7 +102,7 @@ const Image = styled.img`
     top: -13vh;
     left: 15vw;
     ${mobile({
-        width: "40vw",
+        width: "30vw",
         top: "30%",
         left: "-18vw",
     })}
@@ -111,6 +111,7 @@ const ContentSection = styled.div`
     width: 350px;
     padding: 0 110px;
     ${mobile({
+        height: "35vh",
         width: "70vw",
         padding: "5vw",
         textAlign: `${props => props.big ? "center" : "left" }`,
