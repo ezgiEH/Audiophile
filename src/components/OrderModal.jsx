@@ -125,32 +125,32 @@ const OrderModal = () => {
   const handleClick = () => {
     dispatch(removeAllProduct())
   }
-
-  return (
-    <Container>
-      <Icon src={Ok}></Icon>
-      <Header>THANK YOU <br />FOR YOUR ORDER</Header>
-      <Text>You will receive an email confirmation shortly.</Text>
-      <OrderContainer>
-        <OrderBox>
-          <Item>
-            <Image src={order[0].image.mobile} />
-            <Info>
-              <Text bold>{order[0].name.split(" ", 2).join(" ")}</Text>
-              <Text>$ {order[0].price}</Text>
-            </Info>
-            <Text>x {order[0].quantity}</Text>
-          </Item>
-          <Text>and {order.length - 1} other item(s)</Text>
-        </OrderBox>
-        <TotalBox>
-          <Text white>GRAND TOTAL</Text>
-          <Text bold white>$ {total + 50}</Text>
-        </TotalBox>
-      </OrderContainer>
-      <Button onClick={() => handleClick()}><Link to="/">Back to Home</Link></Button>
-    </Container>
-  )
+ 
+    return (
+      <Container>
+        <Icon src={Ok}></Icon>
+        <Header>THANK YOU <br />FOR YOUR ORDER</Header>
+        <Text>You will receive an email confirmation shortly.</Text>
+        <OrderContainer>
+          <OrderBox>
+            <Item>
+              <Image src={order[0].image.mobile} />
+              <Info>
+                <Text bold>{order[0].name.split(" ", 2).join(" ")}</Text>
+                <Text>$ {order[0].price}</Text>
+              </Info>
+              <Text>x {order[0].quantity}</Text>
+            </Item>
+            <Text>and {order.length - 1} other item(s)</Text>
+          </OrderBox>
+          <TotalBox>
+            <Text white>GRAND TOTAL</Text>
+            <Text bold white>$ {total + 50}</Text>
+          </TotalBox>
+        </OrderContainer>
+        <Button onClick={() => handleClick()}><Link to="/">Back to Home</Link></Button>
+      </Container>
+    )
 }
 
 export default OrderModal

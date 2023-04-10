@@ -22,12 +22,6 @@ const Header = styled.h2`
   color: ${props => props.form ? "var(--Main-Orange)" : "var(--Main-black)"};
 `
 
-// const Form = styled.form`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: flex-start;
-//   justify-content: flex-start;
-// `
 const BillingDetail = styled.div`
   padding: 2px;
   display: flex;
@@ -135,7 +129,7 @@ const CheckoutForm = () => {
   return (
     <Container>
       <ModalContainer style={{ display: `${open}` }}>
-        {order.orderedProduct.length > 0 ? <OrderModal/> : <></> }
+        {order.length > 1 ? <OrderModal /> : <><p>merhaba</p></>}
       </ModalContainer>
       <Header>Checkout</Header>
       <Formik
@@ -154,7 +148,11 @@ const CheckoutForm = () => {
         validationSchema={validationSchema}
         onSubmit={values => {
           console.log(values);
-          dispatch(addOrder(values))
+          try {
+            dispatch(addOrder(values))
+          } catch (error) {
+            console.log(error);
+          }
           setOpen("flex")
         }}
       >
