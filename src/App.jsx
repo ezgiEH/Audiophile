@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Category from './pages/Category';
 import ProductDetail from './pages/ProductDetail';
 import Checkout from './pages/Checkout';
+import OrderModal from './components/OrderModal';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path= "/category/:id" element={<Category />} />
         <Route path="/products/:id" element={<ProductDetail />}/>
         <Route path="/checkout" element={<Checkout />}/>
+        <Route path="/checkout/order" element={<OrderModal />}/>
       </Routes>
     </Router>
     

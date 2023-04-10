@@ -88,7 +88,7 @@ const Footer = () => {
     <Container>
         <Wrapper>
             <FooterMenu>
-                <Logo>audophile</Logo>
+                <Logo>audiophile</Logo>
                 <Menu>
                     <Link to="/" className='menu'>Home</Link>
                     <Link to="/category/headphones" className='menu'>Headphones</Link>

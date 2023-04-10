@@ -152,7 +152,7 @@ const Navbar = () => {
                     </HamburgerMenu>
                 </MobileMenuContainer>
                 <Logo>
-                    <Header>audophile</Header>
+                    <Header>audiophile</Header>
                 </Logo>
                 <Menu>
                     <MenuItem><Link to="/" className='menu'>Home</Link></MenuItem>

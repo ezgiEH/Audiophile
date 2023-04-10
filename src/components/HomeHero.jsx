@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import HeroImage from '../assets/home/desktop/image-hero.jpg'
 import HeroImageMobile from '../assets/home/mobile/image-header.jpg'
 import {mobile, tablet} from '../responsive'
+import { Link } from 'react-router-dom'
 
 const Container = styled.div`
     width: 100vw;
@@ -91,7 +92,7 @@ const HomeHero = () => {
                 <Overline>New Product</Overline>
                 <Header>XX99 Mark II Headphones</Header>
                 <Text>Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.</Text>
-                <Button>See Product</Button>
+                <Button><Link to="/products/4">See Product</Link></Button>
             </InfoSection>
             <ImageSection>
             </ImageSection>

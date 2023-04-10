@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup';
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux';
 import { addOrder } from '../redux/CartRedux';
 import OrderModal from './OrderModal';
+import { useNavigate } from 'react-router-dom'
 import { mobile, tablet } from '../responsive'
 
 const Container = styled.div`
@@ -92,17 +93,17 @@ const PayButton = styled.button`
   width: "100%",
 })}
 `
-const ModalContainer = styled.div`
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: rgba(1, 1 , 1, .5);
+// const ModalContainer = styled.div`
+//   position: absolute;
+//   align-items: center;
+//   justify-content: center;
+//   width: 100%;
+//   height: 100%;
+//   top: 0;
+//   left: 0;
+//   background: rgba(1, 1 , 1, .5);
 
-`
+// `
 
 const CheckoutForm = () => {
 
@@ -125,12 +126,13 @@ const CheckoutForm = () => {
 
   })
 
+  const navigate = useNavigate()
 
   return (
     <Container>
-      <ModalContainer style={{ display: `${open}` }}>
+      {/* <ModalContainer style={{ display: `${open}` }}>
         {order.length > 1 ? <OrderModal /> : <><p>merhaba</p></>}
-      </ModalContainer>
+      </ModalContainer> */}
       <Header>Checkout</Header>
       <Formik
         initialValues={{
@@ -153,7 +155,7 @@ const CheckoutForm = () => {
           } catch (error) {
             console.log(error);
           }
-          setOpen("flex")
+          navigate("/checkout/order");
         }}
       >
         {({ handleSubmit, handleChange, values, errors }) => (

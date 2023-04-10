@@ -154,13 +154,13 @@ const HighlightProducts = () => {
                         <Header>Zx9 Speaker</Header>
                         <Text>Upgrade to premium speakers that are
                             phenomenally built to deliver truly remarkable sound.</Text>
-                        <Button $primary>See Product</Button>
+                        <Button $primary ><Link to="/products/6">See Product</Link></Button>
                     </ContentSection>
                 </BigProduct>
                 <SecondProduct>
                     <ContentSection>
                         <HeaderTwo>ZX7 SPEAKER</HeaderTwo>
-                        <Button>See Product</Button>
+                        <Button><Link to="/products/5">See Product</Link></Button>
                     </ContentSection>
                 </SecondProduct>
                 <SmallProducts>
@@ -170,7 +170,7 @@ const HighlightProducts = () => {
                     <SmallProduct>
                         <ContentSection>
                             <HeaderTwo >Yx1 Earphones</HeaderTwo>
-                            <Button>See Product</Button>
+                            <Button><Link to="/products/1">See Product</Link></Button>
                         </ContentSection>
                     </SmallProduct>
                 </SmallProducts>

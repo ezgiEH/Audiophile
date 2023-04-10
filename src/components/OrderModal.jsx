@@ -6,6 +6,16 @@ import { Link } from 'react-router-dom'
 import { removeAllProduct, removeOrder } from '../redux/CartRedux'
 import { mobile, tablet } from '../responsive'
 
+
+const ModalContainer = styled.div`
+    width: 100vw;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+`
+
 const Container = styled.div`
     width: 500px;
     height: 500px;
@@ -125,8 +135,9 @@ const OrderModal = () => {
   const handleClick = () => {
     dispatch(removeAllProduct())
   }
- 
-    return (
+
+  return (
+    <ModalContainer>
       <Container>
         <Icon src={Ok}></Icon>
         <Header>THANK YOU <br />FOR YOUR ORDER</Header>
@@ -150,7 +161,8 @@ const OrderModal = () => {
         </OrderContainer>
         <Button onClick={() => handleClick()}><Link to="/">Back to Home</Link></Button>
       </Container>
-    )
+    </ModalContainer>
+  )
 }
 
 export default OrderModal
