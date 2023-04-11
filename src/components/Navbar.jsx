@@ -106,7 +106,6 @@ const Badge = styled.span`
 const MobileMenuContainer = styled.div`
     display: none;
     height: 100%;
-    background: rgba(1, 1 , 1, .5);
     flex: 1;
     ${mobile({
     display: "flex",
