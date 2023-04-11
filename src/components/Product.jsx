@@ -258,9 +258,9 @@ const ItemContainer = styled.div`
     justify-content: center;
     gap: 32px;
      ${mobile({
-    width: "90%",
+    width: "80vw",
     // flexDirection: "column",
-    justifyContent:"center",
+    justifyContent:"flex-start",
     left:"0",
     overflowX: "scroll",
     scrollBehavior: "smooth",
@@ -283,7 +283,7 @@ const BoxImage = styled.img`
     object-fit: contain;
     border-radius: var(--Main-border-radius);
     ${mobile({
-    width: "260px",
+    width: "240px",
     height: "120px",
     background: "var(--Main-Gray)",
 })}
