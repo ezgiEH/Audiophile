@@ -158,6 +158,7 @@ const FeaturesBox = styled.div`
     ${mobile({
     flexDirection: "column",
     height: "auto",
+    width:"80vw",
 })}
 `
 
@@ -211,6 +212,7 @@ const LeftColumn = styled.div`
     ${mobile({
     width: "80vw",
     flexDirection: "column",
+    gap: "8px",
 })}
 `
 

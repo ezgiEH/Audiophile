@@ -23,6 +23,9 @@ const Wrapper = styled.div`
     justify-content: center;
     color: var(--Main-White);
     gap: 5vh;
+    ${mobile({
+    width:"80vw",
+})}
 `
 const FooterMenu = styled.div`
     width: 100%;
