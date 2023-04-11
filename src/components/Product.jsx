@@ -240,13 +240,17 @@ const GalleryImage = styled.img`
 })}
 `
 const LikeBox = styled.div`
-    margin: 10vh 0 ;
+    margin: 5vh 0 ;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 32px;
-    
+    ${mobile({
+    position:"relative",
+    width: "100vw",
+    overflow:"hidden",
+})}
 `
 const ItemContainer = styled.div`
     display: flex;
@@ -254,17 +258,24 @@ const ItemContainer = styled.div`
     justify-content: center;
     gap: 32px;
      ${mobile({
-    width: "100%",
-    flexDirection: "column",
+    width: "90%",
+    // flexDirection: "column",
+    justifyContent:"center",
+    left:"0",
+    overflowX: "scroll",
+    scrollBehavior: "smooth",
+    webkitOverflowScrolling: "touch",
 })}
 `
 
 const BoxItem = styled.div`
+    margin: 32px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-   
+    ${mobile({
+})}
 `
 const BoxImage = styled.img`
     width: 350px;
@@ -272,7 +283,7 @@ const BoxImage = styled.img`
     object-fit: contain;
     border-radius: var(--Main-border-radius);
     ${mobile({
-    width: "327px",
+    width: "260px",
     height: "120px",
     background: "var(--Main-Gray)",
 })}
