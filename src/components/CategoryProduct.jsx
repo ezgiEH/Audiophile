@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import {mobile, tablet} from '../responsive'
+import { mobile, tablet } from '../responsive'
 
 
 const ItemBox = styled.div`
@@ -12,12 +12,12 @@ const ItemBox = styled.div`
     &:nth-child(even){
         flex-direction: row-reverse;
         ${mobile({
-        flexDirection: "column",
-    })}
+    flexDirection: "column",
+})}
     }
     ${mobile({
-        flexDirection: "column",
-    })}
+    flexDirection: "column",
+})}
 `
 const ImageSection = styled.div`
     flex: 1;
@@ -33,9 +33,9 @@ const Image = styled.img`
     object-fit: fill;
     border-radius: var(--Main-border-radius);
     ${mobile({
-        width: "327px",
-        height: "352px"
-    })}
+    width: "327px",
+    height: "352px"
+})}
 `
 const InfoSection = styled.div`
     flex: 1;
@@ -46,11 +46,11 @@ const InfoSection = styled.div`
     align-items: flex-start;
     justify-content: center;
     ${mobile({
-        alignItems: "center",
-        textAlign:"center",
-        width:"90vw",
-        padding: "32px"
-    })}
+    alignItems: "center",
+    textAlign: "center",
+    width: "90vw",
+    padding: "32px"
+})}
 `
 const Span = styled.span`
     text-transform: uppercase;
@@ -70,17 +70,22 @@ const Text = styled.p`
     font-size: 15px;
     line-height: 25px;
     opacity: .6;
+    margin-bottom: 32px;
 `
 const Button = styled.a`
     margin-top: 16px;
     padding: 12px 28px;
-    border: 1px solid var(--Main-Orange);
     background-color: var(--Main-Orange);
     color: var(--Main-White);
     text-transform: uppercase;
     font-weight: 700;
     box-shadow: var(--Box-Shadow);
     cursor: pointer;
+    transition: 0.25s;
+    &:hover{
+        box-shadow: inset 0 0 0 2em var(--Main-Gray);
+        color: var(--Main-Orange);
+    }
 `
 
 
@@ -94,7 +99,7 @@ const CategoryProduct = ({ item }) => {
                 <Span>{item.new === true ? "New Product" : ""}</Span>
                 <Header>{item.name}</Header>
                 <Text>{item.description}</Text>
-                <Button><Link to={`/products/${item.id}`}>See Product</Link></Button>
+                <Link to={`/products/${item.id}`}><Button>See Product</Button></Link>
             </InfoSection>
         </ItemBox>
     )

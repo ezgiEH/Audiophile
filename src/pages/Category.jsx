@@ -16,12 +16,12 @@ const Container = styled.div`
 `
 
 const Category = () => {
-    const { id } = useParams()
+  const { id } = useParams()
 
   return (
     <Container>
-      <CategoryHero category={`${id}`}/>
-      <CategoryProducts category={`${id}`}/>
+      <CategoryHero category={`${id}`} />
+      <CategoryProducts category={`${id}`} />
       <Categories />
       <About />
       <Footer />

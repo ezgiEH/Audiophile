@@ -22,13 +22,14 @@ const Container = styled.div`
 })}
 `
 const PayContainer = styled.div`
-    width: 80vw;
+    width: var(--Main-Container-width);
     margin: 10vh 0;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     gap: 32px;
     ${mobile({
+    width: "80vw",
     flexDirection: "column-reverse",
     margin: "0px",
     marginBottom: "10vh",

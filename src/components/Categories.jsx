@@ -5,7 +5,7 @@ import Headphones from '../assets/shared/desktop/image-category-thumbnail-headph
 import Speakers from '../assets/shared/desktop/image-category-thumbnail-speakers.png'
 import Earphones from '../assets/shared/desktop/image-category-thumbnail-earphones.png'
 import RightArrow from '../assets/shared/desktop/icon-arrow-right.svg'
-import {mobile, tablet} from '../responsive'
+import { mobile, tablet } from '../responsive'
 
 
 const Container = styled.div`
@@ -17,22 +17,26 @@ const Container = styled.div`
 `
 
 const Wrapper = styled.div`
-    width: 80vw;  
+    width: var(--Main-Container-width);  
     margin-top: 10vh; 
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
     justify-content: center;
-    gap: 3.5vw;
+    gap: 25px;
 `
 
 const CategoryItem = styled.div`
    width: 350px;
    height: 284px;
    ${mobile({
-        width: "327px",
-        height: "217px",
-   })}
+    width: "327px",
+    height: "217px",
+})}
+   ${tablet({
+    width: "223px",
+    height: "125px",
+})}
 `
 const Box = styled.div`
    width: 350px;
@@ -45,9 +49,13 @@ const Box = styled.div`
    justify-content: center;
    cursor: pointer;
    ${mobile({
-        width: "327px",
-        height: "147px",
-   })}
+    width: "327px",
+    height: "147px",
+})}
+   ${tablet({
+    width: "223px",
+    height: "165px",
+})}
 `
 const Image = styled.img`
     margin-top: -80px;
@@ -57,9 +65,9 @@ const Image = styled.img`
         transform: scale(1.2);
     }
     ${mobile({
-        height: "124px",
-        marginTop: "-60px",
-   })}
+    height: "124px",
+    marginTop: "-60px",
+})}
 `
 
 
@@ -68,8 +76,8 @@ const Header = styled.h6`
     color: var(--Main-Black);
     text-transform: uppercase;
     ${mobile({
-         margin: "0",
-   })}
+    margin: "0",
+})}
 `
 const Span = styled.span`
     width: 70px;

@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import Ok from '../assets/checkout/icon-order-confirmation.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { removeAllProduct, removeOrder } from '../redux/CartRedux'
-import { mobile, tablet } from '../responsive'
+import { removeAllProduct } from '../redux/CartRedux'
+import { mobile } from '../responsive'
 
 
 const ModalContainer = styled.div`

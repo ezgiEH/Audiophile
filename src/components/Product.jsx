@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import data from '../data.json'
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
+import { nanoid } from '@reduxjs/toolkit'
 import { addProduct } from '../redux/CartRedux'
 import { mobile, tablet } from '../responsive'
 import { useNavigate } from 'react-router-dom'
@@ -14,7 +15,7 @@ const Container = styled.div`
     justify-content: center;
 `
 const Wrapper = styled.div`
-    width: 80vw;
+    width: var(--Main-Container-width);
     margin: 10vh 0;
     height: auto;
     display: flex;
@@ -141,8 +142,13 @@ const AddButton = styled.button`
     border: none;
     background-color: var(--Main-Orange);
     color: var(--Main-White);
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: var(--Box-Shadow);
     cursor: pointer;
+    transition: 0.25s;
+    &:hover{
+        box-shadow: inset 0 0 0 2em var(--Main-Gray);
+        color: var(--Main-Orange);
+    }
 `
 const FeaturesBox = styled.div`
     margin: 5vh 0;
@@ -181,13 +187,12 @@ const ItemSpan = styled.span`
 `
 
 const ImageBox = styled.div`
-    width: 100%;
+    width: var(--Main-Container-width);
     height: auto;
     margin: 5vh 0;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 32px;
+    justify-content: space-between;
     cursor: crosshair;
     ${mobile({
     width: "80vw",
@@ -201,8 +206,8 @@ const LeftColumn = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 32px;
     overflow: hidden;
+    gap: 32px;
     ${mobile({
     width: "80vw",
     flexDirection: "column",
@@ -280,6 +285,11 @@ const BoxButton = styled.a`
     color: var(--Main-White);
     box-shadow: var(--Box-Shadow);
     cursor: pointer;
+    transition: 0.25s;
+    &:hover{
+        box-shadow: inset 0 0 0 2em var(--Main-Gray);
+        color: var(--Main-Orange);
+    }
 `
 
 const GoBackButton = styled.button`
@@ -311,7 +321,7 @@ const Product = ({ id }) => {
     }
 
     const handleClick = () => {
-        dispatch(addProduct({ ...product, quantity }))
+        dispatch(addProduct({ id: nanoid(), ...product,  quantity }))
     }
 
     const navigate = useNavigate()

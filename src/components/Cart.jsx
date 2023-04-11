@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
-import { removeAllProduct } from '../redux/CartRedux'
+import { removeAllProduct, decProduct, incProduct } from '../redux/CartRedux'
 import { Link } from 'react-router-dom'
 import { mobile, tablet } from '../responsive'
 
@@ -151,16 +151,16 @@ const Cart = () => {
                 <CartItemList>
                     {
                         cartItems.products.map(item => {
-                            return <Item key={item.index}>
+                            return <Item key={item.id}>
                                 <Image src={item.image.mobile}></Image>
                                 <ItemInfo>
                                     <ItemHeader>{item.name}</ItemHeader>
                                     <Text>${item.price}</Text>
                                 </ItemInfo>
                                 <AmountContainer>
-                                    <AmountButton onClick={() => handleQuantity("dec")}>-</AmountButton>
+                                    <AmountButton onClick={() => dispatch(decProduct(item))}>-</AmountButton>
                                     <Amount>{item.quantity}</Amount>
-                                    <AmountButton onClick={() => handleQuantity("inc")}>+</AmountButton>
+                                    <AmountButton onClick={() => dispatch(incProduct(item))}>+</AmountButton>
                                 </AmountContainer>
                             </Item>
                         })

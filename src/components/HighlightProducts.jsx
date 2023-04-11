@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import ZX9 from '../assets/home/desktop/image-speaker-zx9.png'
 import ZX7 from '../assets/home/mobile/image-speaker-zx7.jpg'
 import YX1 from '../assets/home/desktop/image-earphones-yx1.jpg'
-import {mobile, tablet} from '../responsive'
+import { mobile, tablet } from '../responsive'
 
 const Container = styled.div`
     width: 100vw;
@@ -14,7 +14,7 @@ const Container = styled.div`
     justify-content: center;
 `
 const Wrapper = styled.div`
-    width: 80vw;
+    width: var(--Main-Container-width);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,14 +34,24 @@ const BigProduct = styled.div`
     border-radius: var(--Main-border-radius);
     overflow: hidden;
     ${mobile({
-        backgroundPosition: "top",
-        backgroundSize: "80vw",
-        height: "65vh",
-        flexDirection: "column",
-        
-    })}
-`
+    backgroundPosition: "top",
+    backgroundSize: "80vw",
+    height: "65vh",
+    flexDirection: "column",
 
+})}
+`
+const Image = styled.img`
+    width: 410px;
+    position: absolute;
+    top: -15vh;
+    left: 10vw;
+    ${mobile({
+    width: "30vw",
+    top: "30%",
+    left: "-18vw",
+})}
+`
 const SecondProduct = styled.div`
     width: 100%;
     height: 30vh;
@@ -54,12 +64,12 @@ const SecondProduct = styled.div`
     align-items: center;
     justify-content: flex-start;
     ${mobile({
-        background: `url(${ZX7})`,
-        backgroundPosition: "right",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "55vh",
-        height: "50vh",
-    })}
+    background: `url(${ZX7})`,
+    backgroundPosition: "right",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "55vh",
+    height: "50vh",
+})}
 `
 const SmallProducts = styled.div`
     width: 100%;
@@ -69,9 +79,9 @@ const SmallProducts = styled.div`
     justify-content: flex-start;
     gap: 5vw;
     ${mobile({
-        flexDirection: "column",
-        height: "50vh",
-    })}
+    flexDirection: "column",
+    height: "50vh",
+})}
 `
 const SmallProduct = styled.div`
     width: 50%;
@@ -84,50 +94,49 @@ const SmallProduct = styled.div`
     border-radius: var(--Main-border-radius);
     overflow: hidden;
     ${mobile({
-        width: "100%",
-    })}
+    width: "100%",
+})}
 `
 const SmallImage = styled.img`
     width: 100%;
     height: 100%;
+    object-fit: cover;
 `
 
 const ImageSection = styled.div`
     flex: 1.5;
     position: relative;
 `
-const Image = styled.img`
-    width: 20vw;
-    position: absolute;
-    top: -13vh;
-    left: 15vw;
-    ${mobile({
-        width: "30vw",
-        top: "30%",
-        left: "-18vw",
-    })}
-`
+
 const ContentSection = styled.div`
     width: 350px;
+    height: 30vh;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
     padding: 0 110px;
     ${mobile({
-        height: "35vh",
-        width: "70vw",
-        padding: "5vw",
-        textAlign: `${props => props.big ? "center" : "left" }`,
-    })}
+    height: "35vh",
+    width: "70vw",
+    padding: "5vw",
+    textAlign: `${props => props.big ? "center" : "left"}`,
+})}
 `
 
 const Header = styled.h1`
     color: var(--Main-White);
     margin: 25px 0;
     text-transform: uppercase;
-   
+    
 `
 const HeaderTwo = styled.h2`
     color: var(--Main-Black);
     margin: 25px 0;
     text-transform: uppercase;
+    ${mobile({
+    fontSize: "32px",
+})}
 `
 const Text = styled.p`
     color: var(--Second-White);
@@ -137,9 +146,13 @@ const Button = styled.a`
     border: none;
     border: 1px solid var(--Main-Black);
     background-color: ${props => props.$primary ? "var(--Main-Black)" : "transparent"};
-    color: ${props => props.$primary ? "var(--Main-White)" : "var(--Main-Black)"};;
+    color: ${props => props.$primary ? "var(--Main-White)" : "var(--Main-Black)"};
     text-transform: uppercase;
     cursor: pointer;
+    &:hover{
+        background-color: ${props => props.$primary ? "transparent" : "var(--Main-Black)"};
+        color: ${props => props.$primary ? "var(--Main-Black)" : "var(--Main-White)"};
+    }
 `
 
 const HighlightProducts = () => {
@@ -154,13 +167,13 @@ const HighlightProducts = () => {
                         <Header>Zx9 Speaker</Header>
                         <Text>Upgrade to premium speakers that are
                             phenomenally built to deliver truly remarkable sound.</Text>
-                        <Button $primary ><Link to="/products/6">See Product</Link></Button>
+                        <Link to="/products/6"><Button $primary>See Product</Button></Link>
                     </ContentSection>
                 </BigProduct>
                 <SecondProduct>
                     <ContentSection>
                         <HeaderTwo>ZX7 SPEAKER</HeaderTwo>
-                        <Button><Link to="/products/5">See Product</Link></Button>
+                        <Link to="/products/5" ><Button>See Product</Button></Link>
                     </ContentSection>
                 </SecondProduct>
                 <SmallProducts>
@@ -170,7 +183,7 @@ const HighlightProducts = () => {
                     <SmallProduct>
                         <ContentSection>
                             <HeaderTwo >Yx1 Earphones</HeaderTwo>
-                            <Button><Link to="/products/1">See Product</Link></Button>
+                            <Link to="/products/1"><Button>See Product</Button></Link>
                         </ContentSection>
                     </SmallProduct>
                 </SmallProducts>

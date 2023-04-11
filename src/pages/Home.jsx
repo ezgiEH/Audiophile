@@ -19,11 +19,11 @@ const Container = styled.div`
 const Home = () => {
   return (
     <Container>
-        <HomeHero />
-        <Categories />
-        <HighlightProducts />
-        <About />
-        <Footer />
+      <HomeHero />
+      <Categories />
+      <HighlightProducts />
+      <About />
+      <Footer />
     </Container>
   )
 }

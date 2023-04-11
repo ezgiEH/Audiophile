@@ -14,10 +14,10 @@ const Header = styled.h2`
     text-transform: uppercase;
     margin: 0;
 `
-const CategoryHero = ({category}) => {
+const CategoryHero = ({ category }) => {
   return (
     <Container>
-        <Header>{category}</Header>
+      <Header>{category}</Header>
     </Container>
   )
 }

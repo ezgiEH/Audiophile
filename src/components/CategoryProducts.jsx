@@ -13,7 +13,7 @@ const Container = styled.div`
     justify-content: center;
 `
 const Wrapper = styled.div`
-    width: 80vw;
+    width: var(--Main-Container-width);
     margin: 10vh 0;
     height: auto;
     display: flex;
@@ -25,15 +25,15 @@ const Wrapper = styled.div`
 
 const CategoryProducts = () => {
 
-  const {id} = useParams()
+  const { id } = useParams()
   const categoryItems = data.filter((item) => item.category === `${id}`);
 
   return (
     <Container>
       <Wrapper>
-        {categoryItems.map(item =>{
-            return <CategoryProduct key={item.id} item={item}/>
-          })}
+        {categoryItems.map(item => {
+          return <CategoryProduct key={item.id} item={item} />
+        })}
       </Wrapper>
     </Container>
   )

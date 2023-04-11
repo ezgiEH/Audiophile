@@ -6,14 +6,14 @@ import Footer from '../components/Footer'
 import Product from '../components/Product'
 
 const ProductDetail = () => {
-    const {id} = useParams()
+  const { id } = useParams()
 
   return (
     <div>
-    <Product id={id}/>
-    <Categories />
-    <About />
-    <Footer />
+      <Product id={id} />
+      <Categories />
+      <About />
+      <Footer />
     </div>
   )
 }

@@ -20,7 +20,7 @@ const Container = styled.div`
 `
 
 const Wrapper = styled.div`
-    width: 80vw;
+    width: var(--Main-Container-width);
     height: 10vh;
     display: flex;
     align-items: center;
@@ -40,16 +40,17 @@ const Header = styled.h3`
     margin: 0;
 `
 const Menu = styled.div`
-    flex: 3;
+    flex: 2;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
+    gap: 32px;
     ${mobile({
     display: "none",
 })}
 `
 const MenuItem = styled.a`
-    width: 8vw;
+    height: 100%;
     text-align: center;
     text-transform: uppercase;
     font-size: var(--Subtitle-Fontsize);
@@ -57,6 +58,9 @@ const MenuItem = styled.a`
     letter-spacing: var(--Subtitle-Char);
     color: var(--Main-White);
     cursor: pointer;
+    &:hover{
+        color: var(--Main-Orange);
+    }
 `
 
 const CartContainer = styled.div`
@@ -155,10 +159,10 @@ const Navbar = () => {
                     <Header>audiophile</Header>
                 </Logo>
                 <Menu>
-                    <MenuItem><Link to="/" className='menu'>Home</Link></MenuItem>
-                    <MenuItem><Link to="/category/headphones" className='menu'>Headphones</Link></MenuItem>
-                    <MenuItem><Link to="/category/speakers" className='menu'>Speakers</Link></MenuItem>
-                    <MenuItem><Link to="/category/earphones" className='menu'>Earphones</Link></MenuItem>
+                    <Link to="/" className='menu'><MenuItem>Home</MenuItem></Link>
+                    <Link to="/category/headphones" className='menu'><MenuItem>Headphones</MenuItem></Link>
+                    <Link to="/category/speakers" className='menu'><MenuItem>Speakers</MenuItem></Link>
+                    <Link to="/category/earphones" className='menu'><MenuItem>Earphones</MenuItem></Link>
                 </Menu>
                 <CartContainer>
                     {badge > 0 && <Badge>{badge}</Badge>}

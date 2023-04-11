@@ -89,8 +89,13 @@ const PayButton = styled.button`
     border: none;
     box-shadow: var(--Box-shadow);
     cursor: pointer;
+    transition: 0.25s;
+    &:hover{
+        box-shadow: inset 0 0 0 2em var(--Main-Gray);
+        color: var(--Main-Orange);
+    }
     ${mobile({
-  width: "100%",
+    width: "100%",
 })}
 `
 // const ModalContainer = styled.div`

@@ -2,14 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import HeroImage from '../assets/home/desktop/image-hero.jpg'
 import HeroImageMobile from '../assets/home/mobile/image-header.jpg'
-import {mobile, tablet} from '../responsive'
+import { mobile, tablet } from '../responsive'
 import { Link } from 'react-router-dom'
 
 const Container = styled.div`
     width: 100vw;
-    height: 80vh;
+    height: 70vh;
     background-image: url(${HeroImage});
-    background-position: center;
+    background-position: bottom center;
     background-repeat: no-repeat;
     background-size: cover;
     color: var(--Main-White);
@@ -19,30 +19,30 @@ const Container = styled.div`
     border-bottom-left-radius: var(--Main-border-radius);
     border-bottom-right-radius: var(--Main-border-radius);
     ${mobile({
-        backgroundImage: `url(${HeroImageMobile})`,
-        backgroundPosition: "bottom",
-        height: "60vh",
-    })}
+    backgroundImage: `url(${HeroImageMobile})`,
+    backgroundPosition: "bottom",
+    height: "60vh",
+})}
 `
 const Wrapper = styled.div`
-    width: 80vw;
+    width: var(--Main-Container-width);
     height: 100%;
     display: flex;
     align-items: center;
     ${mobile({
-       justifyContent: "center",
-    })}
+    justifyContent: "center",
+})}
 `
 const InfoSection = styled.div`
     flex: 1;
     ${mobile({
-       width: "90vw",
-       textAlign: "center",
-       display: "flex",
-       flexDirection:"column",
-       alignItems: "center",
-       justifyContent: "center",
-    })}
+    width: "90vw",
+    textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+})}
 `
 const Overline = styled.p`
     text-transform: uppercase;
@@ -56,10 +56,10 @@ const Header = styled.h1`
     line-height: var( --H1-Linepace);
     letter-spacing: var( --H1-Char);
     ${mobile({
-        fontSize: "var(--H2-Fontsize)",
-        lineHeight: "var( --H2-Linepace)",
-        letterSpacing: "var( --H2-Char)",
-    })}
+    fontSize: "var(--H2-Fontsize)",
+    lineHeight: "var( --H2-Linepace)",
+    letterSpacing: "var( --H2-Char)",
+})}
 `
 const Text = styled.p`
     color: var(--Main-Gray);
@@ -75,30 +75,35 @@ const Button = styled.button`
     font-weight: 700;
     text-transform: uppercase;
     cursor: pointer;
+    transition: 0.25s;
+    &:hover{
+        box-shadow: inset 0 0 0 2em var(--Main-Gray);
+        color: var(--Main-Orange);
+    }
 `
 
 const ImageSection = styled.div`
     flex: 2;
     ${mobile({
-        display: "none",
-    })}
+    display: "none",
+})}
 `
 
 const HomeHero = () => {
-  return (
-    <Container>
-        <Wrapper>
-            <InfoSection>
-                <Overline>New Product</Overline>
-                <Header>XX99 Mark II Headphones</Header>
-                <Text>Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.</Text>
-                <Button><Link to="/products/4">See Product</Link></Button>
-            </InfoSection>
-            <ImageSection>
-            </ImageSection>
-        </Wrapper>
-    </Container>
-  )
+    return (
+        <Container>
+            <Wrapper>
+                <InfoSection>
+                    <Overline>New Product</Overline>
+                    <Header>XX99 Mark II Headphones</Header>
+                    <Text>Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.</Text>
+                    <Link to="/products/4"><Button>See Product</Button></Link>
+                </InfoSection>
+                <ImageSection>
+                </ImageSection>
+            </Wrapper>
+        </Container>
+    )
 }
 
 export default HomeHero
