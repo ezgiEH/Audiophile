@@ -26,6 +26,10 @@ const ImageSection = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    ${mobile({
+    width: "327px",
+    height: "352px"
+})}
 `
 const Image = styled.img`
     width: 540px;
