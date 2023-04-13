@@ -143,6 +143,7 @@ const HeaderTwo = styled.h2`
     text-transform: uppercase;
     ${mobile({
     fontSize: "30px",
+    margin: "16px 0",
 })}
 `
 const Text = styled.p`
