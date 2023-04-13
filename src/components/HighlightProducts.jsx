@@ -20,10 +20,11 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: flex-start;
     gap: 5vh;
+    
 `
 const BigProduct = styled.div`
     width: 100%;
-    height: 50vh;
+    height: 60vh;
     background: var(--Main-Orange) url("../assets/home/desktop/pattern-circles.svg");
     background-position: top left;
     background-size: 50vw;
@@ -38,11 +39,11 @@ const BigProduct = styled.div`
     backgroundSize: "80vw",
     height: "65vh",
     flexDirection: "column",
-
+    width:"80vw",
 })}
 `
 const Image = styled.img`
-    width: 410px;
+    width: 350px;
     position: absolute;
     top: -15vh;
     left: 10vw;
@@ -69,6 +70,7 @@ const SecondProduct = styled.div`
     backgroundRepeat: "no-repeat",
     backgroundSize: "55vh",
     height: "50vh",
+    width:"80vw",
 })}
 `
 const SmallProducts = styled.div`
@@ -81,6 +83,8 @@ const SmallProducts = styled.div`
     ${mobile({
     flexDirection: "column",
     height: "50vh",
+    width:"80vw",
+
 })}
 `
 const SmallProduct = styled.div`
@@ -128,7 +132,10 @@ const Header = styled.h1`
     color: var(--Main-White);
     margin: 25px 0;
     text-transform: uppercase;
-    
+    ${mobile({
+    fontSize: "40px",
+    margin: "8px 0",
+})}
 `
 const HeaderTwo = styled.h2`
     color: var(--Main-Black);
