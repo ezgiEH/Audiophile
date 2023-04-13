@@ -69,6 +69,9 @@ const CartContainer = styled.div`
     align-items: center;
     justify-content: flex-end;
     position: relative;
+    ${mobile({
+    justifyContent:"center",
+})}
 `
 const CartButton = styled.button`
     background: transparent;
@@ -101,6 +104,9 @@ const Badge = styled.span`
     position: absolute;
     right: -20px;
     top: -10px;
+    ${mobile({
+    right: "10px",
+})}
 `
 
 const MobileMenuContainer = styled.div`
