@@ -126,16 +126,6 @@ const Cart = () => {
     const dispatch = useDispatch()
     const cartItems = useSelector(state => state.cart)
     const total = useSelector(state => state.cart.total)
-    const [quantity, setQuantity] = useState()
-
-    const handleQuantity = (type) => {
-        if (type === "dec") {
-            quantity > 1 && setQuantity(quantity - 1)
-        }
-        else {
-            setQuantity(quantity + 1)
-        }
-    }
 
     const handleRemove = () => {
         dispatch(removeAllProduct())
