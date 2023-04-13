@@ -63,6 +63,7 @@ const FooterContent = styled.div`
 })}
 `
 const Text = styled.p`
+    flex: 1.5;
     font-size: ${props => props.small ? "12px" : "15px"};
     ${mobile({
     textAlign: "center",
@@ -82,7 +83,6 @@ const Social = styled.div`
 const SocialLink = styled.a`
     
 `
-
 
 
 
