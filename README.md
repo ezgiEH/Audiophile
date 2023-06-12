@@ -1,35 +1,32 @@
-# [Frontend Mentor - Audiophile e-commerce website](https://audiophile-eh.netlify.app/)
+# Audiophile Front-end Challenge
+<img width="600px" height="400px" src="./preview.jpg"/>
+Welcome to the Audiophile Front-end Challenge! This project is a front-end coding competition project aimed at testing my skills in creating a responsive and interactive website for an audiophile e-commerce store.
 
-![Design preview for the Audiophile e-commerce website coding challenge](./preview.jpg)
+## Table of Contents
 
-## Welcome! 👋
+- [Introduction](#introduction)
+- [Challenge](#challenge)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [License](#license)
 
-Thanks for purchasing this premium Frontend Mentor coding challenge.
+## Introduction
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects. These premium challenges are perfect portfolio pieces, so please feel free to use what you create in your portfolio to show others.
+The Audiophile Front-end Challenge is designed to assess our ability to create a visually appealing and functional website for the audiophile e-commerce store. By completing this competition, I had the opportunity to showcase my React.js, Styled Component skills, as well as your understanding of responsive design principles and user experience.
 
-**To do this challenge, you need a strong understanding of HTML, CSS, and JavaScript.**
+## Challenge
 
-## The challenge
+The challenge is to create a responsive website for an audiophile store based on the provided design files. The design files contain the desktop and mobile versions along with the design features and assets.
 
-Your challenge is to build out this multi-page e-commerce website and get it looking as close to the design as possible.
+Our task is to implement the design using HTML, CSS and JavaScript and make the website fully responsive on different screen sizes. The website must accurately represent the design provided, including interactive elements, product listings, and cart functionality.
 
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
+For detailed instructions and design files, please refer to the [Challenge Folder](https://www.frontendmentor.io/solutions/audiophile-app-with-reactjs-8n1_joZFKB) within this repository.
 
-If you choose to use a JS-heavy approach, we provide a local `data.json` file for the products. If you want to take it up a notch, feel free to build this as a full-stack application or use a headless CMS!
+## Installation
 
-Your users should be able to:
+To get started with the Audiophile Projects repository, you can simply clone the repository to your local machine using the following command:
 
-- View the optimal layout for the app depending on their device's screen size
-- See hover states for all interactive elements on the page
-- Add/Remove products from the cart
-- Edit product quantities in the cart
-- Fill in all fields in the checkout
-- Receive form validations if fields are missed or incorrect during checkout
-- See correct checkout totals depending on the products in the cart
-  - Shipping always adds $50 to the order
-- See an order confirmation modal after checking out with an order summary
-- **Bonus**: Keep track of what's in the cart, even after refreshing the browser (`localStorage` could be used for this if you're not building out a full-stack app)
-
-
-
+```shell
+git clone https://github.com/ezgiEH/Audiophile
