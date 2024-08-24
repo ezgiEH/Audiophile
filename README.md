@@ -1,4 +1,5 @@
-# Audiophile Front-end Challenge
+# Audiophile Front-end Challenge | <a href="https://audiophile-eh.netlify.app/">DEMO</a>
+
 <img width="600px" height="400px" src="./preview.jpg"/>
 Welcome to the Audiophile Front-end Challenge! This project is a front-end coding competition project aimed at testing my skills in creating a responsive and interactive website for an audiophile e-commerce store.
 
